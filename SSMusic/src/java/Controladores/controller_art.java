@@ -1,0 +1,44 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package Controladores;
+
+import DAO.DAO_Artista;
+import DAO.IArtista_DAO;
+import Modelo.Artista;
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ *
+ * @author scardonas
+ */
+public class controller_art {
+
+    public controller_art() {
+    }
+
+    public void registerArt(Artista art) {
+        IArtista_DAO adao = new DAO_Artista();
+        adao.setArtista(art);
+    }
+
+    public void updateUser(Artista art) {
+        IArtista_DAO adao = new DAO_Artista();
+        adao.updateArtista(art);
+    }
+
+    public void deleteUser(Artista art) {
+        IArtista_DAO adao = new DAO_Artista();
+        adao.deleteArtista(art);
+    }
+
+    public List<Artista> getUsers() {
+        List<Artista> arts = new ArrayList<Artista>();
+        IArtista_DAO adao = new DAO_Artista();
+        arts = adao.getArtistas();
+        return arts;
+    }
+}
