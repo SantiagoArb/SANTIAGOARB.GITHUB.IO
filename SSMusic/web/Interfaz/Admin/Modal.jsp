@@ -13,7 +13,7 @@
                 <div class="modal-header">
                     <div class="form_top">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h2>Registro de <span>Materias</span></h2>
+                        <h2>Registro de <span>Empresa</span></h2>
                     </div> 
                 </div>
                 <div class="modal-body" >
@@ -55,6 +55,7 @@
                 </div>
             </div>
         </form>
+        <!--End -->
     </div>
 </div>
 
