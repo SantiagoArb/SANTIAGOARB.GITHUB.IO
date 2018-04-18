@@ -5,7 +5,9 @@
  */
 package Servlets;
 
+import Controladores.controller_emp;
 import Controladores.controller_user;
+import Modelo.Empresa;
 import Modelo.Usuario;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
@@ -36,20 +38,22 @@ public class Otro extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("application/json;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            controller_user usuarios = new controller_user();
-            List<Usuario> users = usuarios.getUsers();
+            controller_emp empresas = new controller_emp();
+            List<Empresa> listEmp = empresas.getEmpresas();
             com.google.gson.JsonObject json = new JsonObject();
 
             JsonArray array = new JsonArray();
-            for (Usuario x : users) {
+            for (Empresa x : listEmp) {
                 JsonObject item = new JsonObject();
-                item.addProperty("id", x.getId());
-                item.addProperty("nombres", x.getNombres());
-                item.addProperty("apellido1", x.getApellido1());
+                item.addProperty("id", x.getId_emp());
+                item.addProperty("NIT_Empresa", x.getNIT_emp());
+                item.addProperty("Nom_Empresa", x.getNom_emp());
+                item.addProperty("Tipo_operacion", x.getTipo_operacion());
+                item.addProperty("Valor_operacion", x.getValor_operacion());
                 item.addProperty("acciones", ""
                         + "<div class='btn-group'>"
-                        + "<button type='button' id='"+x.getId()+"' style='width:40px; height:34px' title='Modificar Registro' class='btn btn-xs btn-primary' data-toggle='modal' data-target='#Modal_RegistrarEmp' data-id='1' data-accion='Observacion'> <i class='icon_pencil-edit'></i></button> "
-                        + "<button type='button' id='"+x.getId()+"' style='width:40px; height:34px' title='Eliminar Registro' class='btn btn-xs btn-danger btn_delete' data-toggle='modal' data-target='#ModalEliminar' data-id='1' data-accion='Eliminar'><i class='icon_trash'></i></button>"
+                        + "<button type='button' id='"+x.getId_emp()+"' style='width:40px; height:34px' title='Modificar Registro' class='btn btn-xs btn-primary' data-toggle='modal' data-target='#Modal_RegistrarEmp' data-id='1' data-accion='Observacion'> <i class='icon_pencil-edit'></i></button> "
+                        + "<button type='button' id='"+x.getId_emp()+"' style='width:40px; height:34px' title='Eliminar Registro' class='btn btn-xs btn-danger btn_delete' data-toggle='modal' data-target='#ModalEliminar' data-id='1' data-accion='Eliminar'><i class='icon_trash'></i></button>"
                         + "</div>");
                 array.add(item);
             }

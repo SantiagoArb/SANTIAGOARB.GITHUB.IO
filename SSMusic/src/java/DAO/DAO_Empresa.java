@@ -26,8 +26,10 @@ public class DAO_Empresa implements IEmpresa_DAO {
         boolean registrar = false;
 
         Connection con = null;
-        String sql = "INSERT INTO EMPRESA "
+        String sql = "INSERT INTO EMPRESA_DIFUSORA "
                 + "("
+                + "ID_EMPRESA_D, "
+                + "ID_EMAYOR, "
                 + "NIT_EMPRESA_D, "
                 + "NOM_EMPRESA_D, "
                 + "NOM_ENCARGADO_D, "

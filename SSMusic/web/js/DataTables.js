@@ -67,9 +67,10 @@ $(document).ready(function () {
                 width: '15px'
             },
             {data: "id"},
-            {data: "nombres"},
-            {data: "apellido1"},
-            {data: "acciones"}
+            {data: "NIT_Empresa"},
+            {data: "Nom_Empresa"},
+            {data: "Tipo_operacion"},
+            {data: "Valor_operacion"}
         ],
         order: [[1, 'asc']],
         dom: 'fBrtip',

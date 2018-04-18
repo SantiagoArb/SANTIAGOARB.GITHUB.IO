@@ -40,6 +40,7 @@
                                             <option>Operaciones</option>
                                             <option>Ventas</option>
                                         </select>
+                                        <button type="button" class="btn btn-xs btn-success BTN_Accion" role="button" data-toggle="modal" data-target="#Modal_RegistrarEmp" data-id="1" data-accion="Registrar Empresa">Registrar Empresa</button>
                                         <button type="button" class="btn btn-xs btn-primary BTN_Accion" role="button" data-toggle="modal" data-target="#Modal_RegistrarEmp" data-id="1" data-accion="Registrar Artista">Registrar Artista</button>
                                     </header>                      
                                     <div id="table-responsive">
@@ -47,18 +48,20 @@
                                             <thead>
                                                 <tr>                                            
                                                     <th></th>
-                                                    <th>Username</th>
-                                                    <th>Nombre</th>
-                                                    <th>Apellidos</th>
+                                                    <th>NIT Empresa</th>
+                                                    <th>Empresa</th>
+                                                    <th>Tipo de Operacion</th>
+                                                    <th>Valor de Operacion</th>
                                                     <th>Acciones</th>
                                                 </tr>
                                             </thead>
                                             <tfoot>
                                                 <tr>
                                                     <th></th>
-                                                    <th>Username</th>
-                                                    <th>Nombre</th>
-                                                    <th>Apellidos</th>
+                                                    <th>NIT Empresa</th>
+                                                    <th>Empresa</th>
+                                                    <th>Tipo de Operacion</th>
+                                                    <th>Valor de Operacion</th>
                                                     <th>Acciones</th>
                                                 </tr>
                                             </tfoot>
