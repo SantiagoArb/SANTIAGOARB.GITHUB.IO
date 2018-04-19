@@ -5,9 +5,11 @@
  */
 package Servlets;
 
+import Controladores.controller_art;
 import Controladores.controller_emp;
 import DAO.IEmpresa_DAO;
 import Metodos.Calendario;
+import Modelo.Artista;
 import Modelo.Empresa;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -73,18 +75,24 @@ public class Registros extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
         if (request.getParameter("RegistroEmpresa") != null) {
             RegistroEmpresa(request, response);
+        };
+        if(request.getParameter("RegistroArtista") != null) {
+            RegistroArtista(request, response);
         };
 
     }
 
     public void RegistroEmpresa(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        try{
         Calendario fechaR = new Calendario();
         String FECHA_REGISTRO = fechaR.Fecha_Registro();
         HttpSession res = request.getSession(true);
         Empresa emp = new Empresa();
+        emp.setId_emp(1);
         emp.setId_emp_ma(1);
         emp.setNIT_emp(request.getParameter("NIT_EMPRESA_D"));
         emp.setNom_emp(request.getParameter("NOM_EMPRESA_D"));
@@ -95,7 +103,6 @@ public class Registros extends HttpServlet {
         emp.setTipo_operacion(request.getParameter("TIPO_OPERACION_D"));
         emp.setValor_operacion(request.getParameter("VALOR_OPERACION_D"));
         emp.setFecha_registro(FECHA_REGISTRO);
-
         controller_emp edao = new controller_emp();
         boolean result = edao.registerEmpresa(emp);
         if (!result) {
@@ -108,8 +115,41 @@ public class Registros extends HttpServlet {
         }
 
     }
+    catch(Exception e){
+     System.out.println(e);
+}
+    }
 
     ;
+    
+    public void RegistroArtista(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        Calendario fechaR = new Calendario();
+        String FECHA_REGISTRO = fechaR.Fecha_Registro();
+        HttpSession res = request.getSession(true);
+        Artista art = new Artista();
+        art.setId(1);
+        art.setNombre_art(request.getParameter("NOM_ARTISTA"));
+        art.setNom_representante(request.getParameter("NOM_REPRESENTANTE"));
+        art.setDoc_representante(request.getParameter("DOC_REPRESENTANTE"));
+        art.setTel_representante(request.getParameter("TEL_REPRESENTANTE"));
+        art.setCor_representante(request.getParameter("COR_REPRESENTANTE"));
+        art.setId_empresa_d_art(26);
+        art.setFecha_registro_art("19/04/2018");
+        
+        
+
+        controller_art adao = new controller_art();
+        boolean result = adao.registerArt(art);
+        if (!result) {
+            res.setAttribute("ErrorRegistroArt", "NO GUARDO");
+            response.sendRedirect("Interfaz/Admin/Gestion.jsp");
+        } else {
+            res.setAttribute("ErrorRegistroArt", "Guardo");
+            response.sendRedirect("Interfaz/Admin/Gestion.jsp");
+
+        }
+    };
              
              
              

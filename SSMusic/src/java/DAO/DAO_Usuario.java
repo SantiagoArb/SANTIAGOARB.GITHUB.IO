@@ -14,6 +14,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -97,6 +99,63 @@ public class DAO_Usuario implements IUsuario_DAO {
         } catch (SQLException e) {
             System.out.println("Error: Clase DAO_USUARIO, método obtener");
             e.printStackTrace();
+        }
+
+        return listaUsuario;
+    }
+    
+    @Override
+    public Usuario getOneUser(Usuario user) {
+        Connection co = null;
+        Statement stm = null;
+        ResultSet rs = null;
+        System.out.println("LLego al dao: "+ user);
+        String sql = "SELECT ID_USUARIO,ID_EMPRESA_U,TIPO_PERFIL,USERNAME,PASS,NOMBRES,APELLIDO1,APELLIDO2,DOCUMENTO,CORREO,TELEFONO,DIRECCION,FECHA_REGISTRO FROM USUARIO WHERE USERNAME=? AND PASS=?";
+
+        Usuario listaUsuario = new Usuario();
+
+        try {
+            co = DBUtil.getConexion();
+            PreparedStatement ps = co.prepareStatement(sql);
+            
+            ps.setString(1, user.getUsername());
+            ps.setString(2, user.getPass());
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                Usuario u = new Usuario();
+                u.setId(rs.getInt("ID_USUARIO"));
+                u.setTipo_perfil(rs.getString("TIPO_PERFIL"));
+                u.setUsername(rs.getString("USERNAME"));
+                u.setPass(rs.getString("PASS"));
+                u.setNombres(rs.getString("NOMBRES"));
+                u.setApellido1(rs.getString("APELLIDO1"));
+                u.setApellido2(rs.getString("APELLIDO2"));
+                u.setDocumento(rs.getString("DOCUMENTO"));
+                u.setCorreo(rs.getString("CORREO"));
+                u.setTelefono(rs.getString("TELEFONO"));
+                u.setDireccion(rs.getString("DIRECCION"));
+                u.setFecha_registro(rs.getString("FECHA_REGISTRO"));
+                listaUsuario = u;
+                System.out.println("Objeto u: "+u);
+            }
+            System.out.println("objeto listaUsuario: "+listaUsuario);
+            
+            
+        } catch (SQLException e) {
+            System.out.println("Error: Clase DAO_USUARIO, método obtener");
+            e.printStackTrace();
+        }finally{
+           
+            try {
+                rs.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(DAO_Usuario.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            try {
+                co.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(DAO_Usuario.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
 
         return listaUsuario;

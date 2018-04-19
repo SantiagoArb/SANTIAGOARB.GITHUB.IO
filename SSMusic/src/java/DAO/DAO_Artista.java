@@ -30,22 +30,28 @@ public class DAO_Artista implements IArtista_DAO {
         Connection con = null;
         String sql = "INSERT INTO ARTISTA"
                 + "("
+                + "ID_ARTISTA, "
                 + "NOM_ARTISTA, "
                 + "NOM_REPRESENTANTE, "
                 + "DOC_REPRESENTANTE, "
                 + "TEL_REPRESENTANTE, "
-                + "COR_REPRESENTANTE"
+                + "COR_REPRESENTANTE, "
+                + "ID_EMPRESA_D_ART, "
+                + "FECHA_REGISTRO_ART"
                 + ") "
-                + "VALUES(?,?,?,?,?)";
+                + "VALUES(?,?,?,?,?,?,?,?)";
 
         try {
             con = DBUtil.getConexion();
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setString(1, art.getNombre_art());
-            ps.setString(2, art.getNom_representante());
-            ps.setString(3, art.getDoc_representante());
-            ps.setString(4, art.getTel_representante());
-            ps.setString(5, art.getCor_representante());
+            ps.setInt(1,1);
+            ps.setString(2, art.getNombre_art());
+            ps.setString(3, art.getNom_representante());
+            ps.setString(4, art.getDoc_representante());
+            ps.setString(5, art.getTel_representante());
+            ps.setString(6, art.getCor_representante());
+            ps.setInt(7,art.getId_empresa_d_art());
+            ps.setString(8,art.getFecha_registro_art());
             ps.executeQuery();
             ps.close();
             con.close();

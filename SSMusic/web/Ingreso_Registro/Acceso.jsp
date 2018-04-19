@@ -53,21 +53,58 @@
                             <h2 class="service-title pad-bt15">Bienvenido</h2>
                             <hr class="bottom-line">
                             <div id="formDiv">
-                                <p style="color: #ff0000">${sessionScope['ErrorLogin']}</p>
-                                <form id="Registro" class="form_in" method="post" action="../Interfaz/Admin/Inicio.jsp">   
-                                    <input name="nick" class="input" type="text" placeholder="&#128100; Usuario" required autofocus>
-                                    <input name="password" class="input" type="password" placeholder="&#128273; Contraseña" required autofocus>
+                                <p id="P_confirmacion" style="color: #ff0000"></p>
+                                <!--<form id="Registro" class="form_in" method="post" action="">   -->
+                                <div class="container">
+                                <div class="col-sm-4"></div>
+                                <div class="col-sm-4">
+                                    <input name="nick" id="nick" class="form-control" type="text" placeholder="&#128100; Usuario" required autofocus>
+                                    </div>
+                                </div>
+                                <br/>
+                                <div class="container">
+                                    <div class="col-sm-4"></div>
+                                <div class="col-sm-4">
+                                    <input name="password" id="password" class="form-control" type="password" placeholder="&#128273; Contraseña" required autofocus>
+                                    </div>
+                                </div>
                                     <a href="../Ingreso_Registro/Inicio.jsp" style="font-size: small; text-align: left">¿Olvidaste tu contraseña?</a>
                                     <div class="btn_form">
-                                        <input class="btn_submit" type="submit" value="Ingresar">
+                                        <button id="btn_ingreso" onclick="Login();" class="btn_submit">Iniciar</button>
+                                       <!-- <input class="btn_submit" type="submit" value="Ingresar">-->
                                     </div>
-                                </form>
+                              <!--  </form>-->
                             </div>
                         </div>
 
                     </div>
                 </div>
             </section>
+                                
+                                <script>
+            var xMLHttpRequest = new XMLHttpRequest();
+            function Login() {
+               
+                xMLHttpRequest.open("Get", "../Ingreso?nick="+document.getElementById("nick").value+"&password="+document.getElementById("password").value, true);
+                xMLHttpRequest.onreadystatechange = processLogin;
+                xMLHttpRequest.send(null);
+                
+            }
+            function processLogin(){
+                  if (xMLHttpRequest.readyState == 4 && xMLHttpRequest.status == 200) {
+                       var resp = eval('(' + xMLHttpRequest.responseText + ')');
+                      if(resp.respuesta[0].ID_USUARIO !== 0){
+                          window.location.replace("http://localhost:17155/SSMusic/Interfaz/Admin/Inicio.jsp");
+                          console.log("Usuario correcto");
+                          
+                          
+                      }else{
+                          document.getElementById("P_confirmacion").innerHTML="Usuario o contraseña Incorrecto";
+                          console.log("uSuario incorrecto");
+                      }
+                  }
+            }
+                                </script>
             <!---->
             <section id="contact" class="section-padding wow fadeInUp delay-05s">
                 <div class="container">

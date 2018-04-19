@@ -16,14 +16,34 @@ public class Artista {
     private String doc_representante;
     private String tel_representante;
     private String cor_representante;
+    private int id_empresa_d_art;
+    private String fecha_registro_art;
 
-    public Artista(int id, String nombre_art, String nom_representante, String doc_representante, String tel_representante, String cor_representante) {
+    public Artista(int id, String nombre_art, String nom_representante, String doc_representante, String tel_representante, String cor_representante, int id_empresa_d_art, String fecha_registro_art) {
         this.id = id;
         this.nombre_art = nombre_art;
         this.nom_representante = nom_representante;
         this.doc_representante = doc_representante;
         this.tel_representante = tel_representante;
         this.cor_representante = cor_representante;
+        this.id_empresa_d_art = id_empresa_d_art;
+        this.fecha_registro_art = fecha_registro_art;
+    }
+
+    public int getId_empresa_d_art() {
+        return id_empresa_d_art;
+    }
+
+    public void setId_empresa_d_art(int id_empresa_d_art) {
+        this.id_empresa_d_art = id_empresa_d_art;
+    }
+
+    public String getFecha_registro_art() {
+        return fecha_registro_art;
+    }
+
+    public void setFecha_registro_art(String fecha_registro_art) {
+        this.fecha_registro_art = fecha_registro_art;
     }
 
     public Artista() {

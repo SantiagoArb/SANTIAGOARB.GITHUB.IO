@@ -34,6 +34,12 @@ public class controller_user {
         IUsuario_DAO udao = new DAO_Usuario();
         udao.deleteUser(user);
     }
+    public Usuario getOneUser(Usuario user) {
+        Usuario users;
+        IUsuario_DAO udao = new DAO_Usuario();
+        users = udao.getOneUser(user);
+        return users;
+    }
     
     public List<Usuario> getUsers() {
         List<Usuario> users = new ArrayList<Usuario>();

@@ -48,20 +48,20 @@ public class DAO_Empresa implements IEmpresa_DAO {
                 + "VALUES(?,?,?,?,?,?,?,?,?,?,?)";
         try {
             con = DBUtil.getConexion();
-            PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1, 1);
-            ps.setInt(2, 1);
-            ps.setString(3, emp.getNIT_emp());
-            ps.setString(4, emp.getNom_emp());
-            ps.setString(5, emp.getNom_encargado());
-            ps.setString(6, emp.getDoc_encargado());
-            ps.setString(7, emp.getTel_encargado());
-            ps.setString(8, emp.getCor_encargado());
-            ps.setString(9, emp.getTipo_operacion());
-            ps.setString(10, emp.getValor_operacion());
-            ps.setString(11, emp.getFecha_registro());
-            ps.executeQuery();
-            ps.close();
+            try (PreparedStatement ps = con.prepareStatement(sql)) {
+                ps.setInt(1, 44);
+                ps.setInt(2, 2);
+                ps.setString(3, emp.getNIT_emp());
+                ps.setString(4, emp.getNom_emp());
+                ps.setString(5, emp.getNom_encargado());
+                ps.setString(6, emp.getDoc_encargado());
+                ps.setString(7, emp.getTel_encargado());
+                ps.setString(8, emp.getCor_encargado());
+                ps.setString(9, emp.getTipo_operacion());
+                ps.setString(10, emp.getValor_operacion());
+                ps.setString(11, emp.getFecha_registro());
+                ps.executeQuery();
+            }
             con.close();
         } catch (SQLException ex) {
             System.out.println("Error: Clase DAO_Empresa, método registrar");

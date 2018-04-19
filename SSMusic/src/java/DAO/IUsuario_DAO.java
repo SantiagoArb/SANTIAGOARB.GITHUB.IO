@@ -21,4 +21,5 @@ public interface IUsuario_DAO {
     public boolean updateUser(Usuario user);
 
     public boolean deleteUser(Usuario user);
+    public Usuario getOneUser(Usuario user);
 }

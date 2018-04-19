@@ -20,9 +20,10 @@ public class controller_art {
     public controller_art() {
     }
 
-    public void registerArt(Artista art) {
+    public boolean registerArt(Artista art) {
         IArtista_DAO adao = new DAO_Artista();
-        adao.setArtista(art);
+        boolean result = adao.setArtista(art);
+        return result;
     }
 
     public void updateUser(Artista art) {
