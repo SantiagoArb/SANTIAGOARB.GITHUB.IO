@@ -41,7 +41,7 @@
                                             <option>Ventas</option>
                                         </select>
                                         <button type="button" class="btn btn-xs btn-success BTN_Accion" role="button" data-toggle="modal" data-target="#Modal_RegistrarEmp" data-id="1" data-accion="Registrar Empresa">Registrar Empresa</button>
-                                        <button type="button" class="btn btn-xs btn-primary BTN_Accion" role="button" data-toggle="modal" data-target="#Modal_RegistrarEmp" data-id="1" data-accion="Registrar Artista">Registrar Artista</button>
+                                        <button type="button" class="btn btn-xs btn-primary BTN_Accion" role="button" data-toggle="modal" data-target="" data-id="2" data-accion="Registrar Artista">Registrar Artista</button>
                                     </header>                      
                                     <div id="table-responsive">
                                         <table id="Izi" class="table table-striped table-advance table-hover">

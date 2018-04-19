@@ -8,7 +8,7 @@
 <!--Modal para el Registro de Materias-->                        
 <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="Modal_RegistrarEmp" >
     <div class="modal-dialog modal-lg" role="document">
-        <form method="post" action="">
+        <form method="post" action="../../Registros">
             <div class="modal-content">
                 <div class="modal-header">
                     <div class="form_top">
@@ -18,13 +18,15 @@
                 </div>
                 <div class="modal-body" >
                     <div class="container-fluid" >
-                        <input name="COD_materia" class="input" type="text" placeholder="&#128272; Codigo de la Materia" required autofocus list="Quest"/>     
-                        <datalist id="Quest">
-                           
-                        </datalist>
-                        <input size="46" name="nombre_materia" class="input" type="text" placeholder="Nombre de la Materia" required autofocus><br>
-                        <input size="70" name="grupos" class="input" type="text" placeholder="&#128100;Escribe los grupos separandolos por un punto y coma(;)">
-                        Este campo no es obligatorio, solo en caso de querer registrar uno o mas grupos asociados a la materia.
+                         <p style="color: #ff0000">${sessionScope['ErrorRegistroEmp']}</p>
+                        <input name="NIT_EMPRESA_D" id='NIT_EMPRESA_D' required autofocus type='text' placeholder="Nit" class="form-control"/>
+                        <input name="NOM_EMPRESA_D" id='NOM_EMPRESA_D' required autofocus type='text'placeholder="Nombre Empresa" class="form-control"/>
+                        <input name="NOM_ENCARGADO_D" id='NOM_ENCARGADO_D' required autofocus type='text' placeholder="Nombre Encargado" class="form-control"/>
+                        <input name="DOC_ENCARGADO_D" id='DOC_ENCARGADO_D' required autofocus type='text' placeholder="Documento Encargado" class="form-control"/>
+                        <input name="TEL_ENCARGADO_D" id='TEL_ENCARGADO_D' required autofocus type='text' placeholder="Telefono Encargado" class="form-control"/>
+                        <input name="COR_ENCARGADO_D" id='COR_ENCARGADO_D' required autofocus type='text' placeholder="Correo Encargado" class="form-control"/>
+                        <input name="TIPO_OPERACION_D" id='TIPO_OPERACION_D' required autofocus type='text' placeholder="Tipo de Operacion" class="form-control"/>
+                        <input name="VALOR_OPERACION_D" id='VALOR_OPERACION_D' required autofocus type='text' placeholder="Valor Operacion" class="form-control"/>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -39,7 +41,7 @@
 <div class="modal fade" id="ModalEliminar" role="dialog">
     <div class="modal-dialog"> 
         <!-- Modal content-->
-        <form method="post" action="">
+        <form method="post" action="../../Registros">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>

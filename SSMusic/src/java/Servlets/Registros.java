@@ -5,12 +5,17 @@
  */
 package Servlets;
 
+import Controladores.controller_emp;
+import DAO.IEmpresa_DAO;
+import Metodos.Calendario;
+import Modelo.Empresa;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -55,7 +60,6 @@ public class Registros extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
     }
 
     /**
@@ -69,20 +73,47 @@ public class Registros extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
         if (request.getParameter("RegistroEmpresa") != null) {
-            String NIT_EMPRESA_D = request.getParameter(name);
-            String NOM_EMPRESA_D = request.getParameter(name);
-            String NOM_ENCARGADO_D = request.getParameter(name);
-            String DOC_ENCARGADO_D = request.getParameter(name);
-            String TEL_ENCARGADO_D = request.getParameter(name);
-            String COR_ENCARGADO_D = request.getParameter(name);
-            String TIPO_OPERACION_D = request.getParameter(name);
-            String VALOR_OPERACION_D = request.getParameter(name);
-            String FECHA_REGISTRO_D = request.getParameter(name);
+            RegistroEmpresa(request, response);
         };
 
     }
+
+    public void RegistroEmpresa(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        Calendario fechaR = new Calendario();
+        String FECHA_REGISTRO = fechaR.Fecha_Registro();
+        HttpSession res = request.getSession(true);
+        Empresa emp = new Empresa();
+        emp.setId_emp_ma(1);
+        emp.setNIT_emp(request.getParameter("NIT_EMPRESA_D"));
+        emp.setNom_emp(request.getParameter("NOM_EMPRESA_D"));
+        emp.setNom_encargado(request.getParameter("NOM_ENCARGADO_D"));
+        emp.setDoc_encargado(request.getParameter("DOC_ENCARGADO_D"));
+        emp.setTel_encargado(request.getParameter("TEL_ENCARGADO_D"));
+        emp.setCor_encargado(request.getParameter("COR_ENCARGADO_D"));
+        emp.setTipo_operacion(request.getParameter("TIPO_OPERACION_D"));
+        emp.setValor_operacion(request.getParameter("VALOR_OPERACION_D"));
+        emp.setFecha_registro(FECHA_REGISTRO);
+
+        controller_emp edao = new controller_emp();
+        boolean result = edao.registerEmpresa(emp);
+        if (!result) {
+            res.setAttribute("ErrorRegistroEmp", "NO GUARDO");
+            response.sendRedirect("Interfaz/Admin/Gestion.jsp");
+        } else {
+            res.setAttribute("ErrorRegistroEmp", "Guardo");
+            response.sendRedirect("Interfaz/Admin/Gestion.jsp");
+
+        }
+
+    }
+
+    ;
+             
+             
+             
+             
 
     /**
      * Returns a short description of the servlet.

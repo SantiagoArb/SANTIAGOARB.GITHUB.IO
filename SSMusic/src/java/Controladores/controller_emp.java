@@ -20,19 +20,22 @@ public class controller_emp {
     public controller_emp() {
     }
 
-    public void registerEmpresa(Empresa emp) {
+    public boolean registerEmpresa(Empresa emp) {
         IEmpresa_DAO edao = new DAO_Empresa();
-        edao.setEmpresa(emp);
+        boolean result = edao.setEmpresa(emp);
+        return result;
     }
 
-    public void updateEmpresa(Empresa emp) {
+    public boolean updateEmpresa(Empresa emp) {
         IEmpresa_DAO edao = new DAO_Empresa();
-        edao.updateEmpresa(emp);
+        boolean result = edao.updateEmpresa(emp);
+        return result;
     }
 
-    public void deleteEmpresa(Empresa emp) {
+    public boolean deleteEmpresa(Empresa emp) {
         IEmpresa_DAO edao = new DAO_Empresa();
-        edao.deleteEmpresa(emp);
+        boolean result = edao.deleteEmpresa(emp);
+        return result;
     }
 
     public List<Empresa> getEmpresas() {

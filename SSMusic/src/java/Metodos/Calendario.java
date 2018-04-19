@@ -14,15 +14,15 @@ import java.util.Locale;
  * @author scardonas
  */
 public class Calendario {
-    public void Fecha_Registro()  {
+    public String Fecha_Registro()  {
         java.util.Date utilDate = new java.util.Date();
         long lnmilisegundos = utilDate.getTime();
         Calendar cal = Calendar.getInstance();
         String sqlDate = fechaString(cal);
         
         java.sql.Time sqlTime = new java.sql.Time(lnmilisegundos);
-        String f = sqlDate + "" + sqlTime;
-    
+        String f = sqlDate + " " + sqlTime;
+        return f;
     }
 
     private String fechaString(Calendar cal) {

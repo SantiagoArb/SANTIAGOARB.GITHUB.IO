@@ -8,12 +8,17 @@ package DAO;
 import Conexion.DBUtil;
 import Modelo.Empresa;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -26,7 +31,7 @@ public class DAO_Empresa implements IEmpresa_DAO {
         boolean registrar = false;
 
         Connection con = null;
-        String sql = "INSERT INTO EMPRESA_DIFUSORA "
+        String sql = "INSERT INTO EMPRESA_DIFUSORA"
                 + "("
                 + "ID_EMPRESA_D, "
                 + "ID_EMAYOR, "
@@ -40,26 +45,28 @@ public class DAO_Empresa implements IEmpresa_DAO {
                 + "VALOR_OPERACION_D, "
                 + "FECHA_REGISTRO_D"
                 + ") "
-                + "VALUES(?,?,?,?,?,?,?,?,?)";
+                + "VALUES(?,?,?,?,?,?,?,?,?,?,?)";
         try {
             con = DBUtil.getConexion();
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setString(1, emp.getNIT_emp());
-            ps.setString(2, emp.getNom_emp());
-            ps.setString(3, emp.getNom_encargado());
-            ps.setString(4, emp.getDoc_encargado());
-            ps.setString(5, emp.getTel_encargado());
-            ps.setString(6, emp.getCor_encargado());
-            ps.setString(7, emp.getTipo_operacion());
-            ps.setString(8, emp.getValor_operacion());
-            ps.setString(9, emp.getFecha_registro());
+            ps.setInt(1, 1);
+            ps.setInt(2, 1);
+            ps.setString(3, emp.getNIT_emp());
+            ps.setString(4, emp.getNom_emp());
+            ps.setString(5, emp.getNom_encargado());
+            ps.setString(6, emp.getDoc_encargado());
+            ps.setString(7, emp.getTel_encargado());
+            ps.setString(8, emp.getCor_encargado());
+            ps.setString(9, emp.getTipo_operacion());
+            ps.setString(10, emp.getValor_operacion());
+            ps.setString(11, emp.getFecha_registro());
             ps.executeQuery();
             ps.close();
             con.close();
         } catch (SQLException ex) {
             System.out.println("Error: Clase DAO_Empresa, método registrar");
             ex.printStackTrace();
-        }
+        } 
         registrar = true;
         return registrar;
     }
@@ -83,7 +90,7 @@ public class DAO_Empresa implements IEmpresa_DAO {
                 u.setId_emp(rs.getInt("ID_EMPRESA_D"));
                 u.setId_emp_ma(rs.getInt("ID_EMAYOR"));
                 u.setNIT_emp(rs.getString("NIT_EMPRESA_D"));
-                u.setNom_emp(rs.getString("NOM_EMPRESA__D"));
+                u.setNom_emp(rs.getString("NOM_EMPRESA_D"));
                 u.setNom_encargado(rs.getString("NOM_ENCARGADO_D"));
                 u.setDoc_encargado(rs.getString("DOC_ENCARGADO_D"));
                 u.setTel_encargado(rs.getString("TEL_ENCARGADO_D"));
