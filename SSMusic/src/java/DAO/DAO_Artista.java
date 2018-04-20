@@ -64,13 +64,13 @@ public class DAO_Artista implements IArtista_DAO {
     }
 
     @Override
-    public List<Artista> getArtistas() {
+    public ArrayList<Artista> getArtistas() {
         Connection co = null;
         Statement stm = null;
         ResultSet rs = null;
 
         String sql = "SELECT * FROM ARTISTA ORDER BY NOM_ARTISTA ASC";
-        List<Artista> listaArtista = new ArrayList<Artista>();
+        ArrayList<Artista> listaArtista = new ArrayList<Artista>();
 
         try {
             co = DBUtil.getConexion();
@@ -84,6 +84,8 @@ public class DAO_Artista implements IArtista_DAO {
                 art.setDoc_representante(rs.getString("DOC_REPRESENTANTE"));
                 art.setTel_representante(rs.getString("TEL_REPRESENTANTE"));
                 art.setCor_representante(rs.getString("COR_REPRESENTANTE"));
+                art.setId_empresa_d_art(rs.getInt("ID_EMPRESA_D_ART"));
+                art.setSrc(rs.getString("src"));
                 listaArtista.add(art);
             }
             stm.close();

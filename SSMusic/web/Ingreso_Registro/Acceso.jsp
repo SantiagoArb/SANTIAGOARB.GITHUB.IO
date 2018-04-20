@@ -90,17 +90,22 @@
                 xMLHttpRequest.send(null);
                 
             }
+            function clean(){
+                document.getElementById("P_confirmacion").style="display:none;color: #ff0000;";
+            }
             function processLogin(){
                   if (xMLHttpRequest.readyState == 4 && xMLHttpRequest.status == 200) {
                        var resp = eval('(' + xMLHttpRequest.responseText + ')');
                       if(resp.respuesta[0].ID_USUARIO !== 0){
                           window.location.replace("http://localhost:17155/SSMusic/Interfaz/Admin/Inicio.jsp");
-                          console.log("Usuario correcto");
+                          
                           
                           
                       }else{
+                          document.getElementById("P_confirmacion").style="display:inline;";
                           document.getElementById("P_confirmacion").innerHTML="Usuario o contraseña Incorrecto";
-                          console.log("uSuario incorrecto");
+                          myVar = setTimeout(clean, 3000);
+                          
                       }
                   }
             }

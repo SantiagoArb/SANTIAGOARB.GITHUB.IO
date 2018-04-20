@@ -36,8 +36,8 @@ public class controller_art {
         adao.deleteArtista(art);
     }
 
-    public List<Artista> getUsers() {
-        List<Artista> arts = new ArrayList<Artista>();
+    public ArrayList<Artista> getUsers() {
+        ArrayList<Artista> arts = new ArrayList<Artista>();
         IArtista_DAO adao = new DAO_Artista();
         arts = adao.getArtistas();
         return arts;

@@ -94,7 +94,7 @@
                 <ul class="sub">   
                     <li><a class="" href="Gestion.jsp">Gestión</a></li>
                     <li><a class="" href="">Información Empresas</a></li>
-                    <li><a class="" href="">Información Artistas</a></li>
+                    <li><a class="" href="info_artistas.jsp">Información Artistas</a></li>
                 </ul>
             </li>
         </ul>

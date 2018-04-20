@@ -1,3 +1,7 @@
 /SSMusic/build/
 /SSMusic/dist/
 /SSMusic/nbproject/private/
+*.properties
+*.properties
+*.properties
+*.xml

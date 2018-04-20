@@ -18,8 +18,10 @@ public class Artista {
     private String cor_representante;
     private int id_empresa_d_art;
     private String fecha_registro_art;
+    private String src;
 
-    public Artista(int id, String nombre_art, String nom_representante, String doc_representante, String tel_representante, String cor_representante, int id_empresa_d_art, String fecha_registro_art) {
+
+    public Artista(int id, String nombre_art, String nom_representante, String doc_representante, String tel_representante, String cor_representante, int id_empresa_d_art, String fecha_registro_art, String src) {
         this.id = id;
         this.nombre_art = nombre_art;
         this.nom_representante = nom_representante;
@@ -28,6 +30,15 @@ public class Artista {
         this.cor_representante = cor_representante;
         this.id_empresa_d_art = id_empresa_d_art;
         this.fecha_registro_art = fecha_registro_art;
+        this.src = src;
+    }
+
+    public String getSrc() {
+        return src;
+    }
+
+    public void setSrc(String src) {
+        this.src = src;
     }
 
     public int getId_empresa_d_art() {
