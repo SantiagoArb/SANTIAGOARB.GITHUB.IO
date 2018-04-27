@@ -11,8 +11,11 @@ import DAO.IEmpresa_DAO;
 import Metodos.Calendario;
 import Modelo.Artista;
 import Modelo.Empresa;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -75,22 +78,30 @@ public class Registros extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
         if (request.getParameter("RegistroEmpresa") != null) {
-            RegistroEmpresa(request, response);
+            response.setContentType("text/html");
+        response.getWriter().write(RegistroEmpresa(request,response));
         };
         if(request.getParameter("RegistroArtista") != null) {
-            RegistroArtista(request, response);
+            response.setContentType("text/html");
+        response.getWriter().write(RegistroArtista(request,response));
+        };
+        if(request.getParameter("listarEmpresa") != null) {
+            response.setContentType("text/html");
+        response.getWriter().write(listarEmpresas(request,response));
         };
 
     }
 
-    public void RegistroEmpresa(HttpServletRequest request, HttpServletResponse response)
+    public String RegistroEmpresa(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+         com.google.gson.JsonObject json = new JsonObject();
+         JsonObject item = new JsonObject();
         try{
+          
         Calendario fechaR = new Calendario();
         String FECHA_REGISTRO = fechaR.Fecha_Registro();
-        HttpSession res = request.getSession(true);
+        
         Empresa emp = new Empresa();
         emp.setId_emp(1);
         emp.setId_emp_ma(1);
@@ -105,28 +116,25 @@ public class Registros extends HttpServlet {
         emp.setFecha_registro(FECHA_REGISTRO);
         controller_emp edao = new controller_emp();
         boolean result = edao.registerEmpresa(emp);
-        if (!result) {
-            res.setAttribute("ErrorRegistroEmp", "NO GUARDO");
-            response.sendRedirect("Interfaz/Admin/Gestion.jsp");
-        } else {
-            res.setAttribute("ErrorRegistroEmp", "Guardo");
-            response.sendRedirect("Interfaz/Admin/Gestion.jsp");
-
-        }
+        
+        item.addProperty("result", result);
+        
 
     }
     catch(Exception e){
      System.out.println(e);
-}
     }
-
-    ;
+      return item.toString();  
+    };
     
-    public void RegistroArtista(HttpServletRequest request, HttpServletResponse response)
+    public String RegistroArtista(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+         JsonObject item = new JsonObject();
+        try{
         Calendario fechaR = new Calendario();
         String FECHA_REGISTRO = fechaR.Fecha_Registro();
-        HttpSession res = request.getSession(true);
+       
         Artista art = new Artista();
         art.setId(1);
         art.setNombre_art(request.getParameter("NOM_ARTISTA"));
@@ -134,21 +142,52 @@ public class Registros extends HttpServlet {
         art.setDoc_representante(request.getParameter("DOC_REPRESENTANTE"));
         art.setTel_representante(request.getParameter("TEL_REPRESENTANTE"));
         art.setCor_representante(request.getParameter("COR_REPRESENTANTE"));
-        art.setId_empresa_d_art(26);
-        art.setFecha_registro_art("19/04/2018");
+        art.setId_empresa_d_art(Integer.parseInt(request.getParameter("ID_EMPRESA_D_ART")));
+        art.setFecha_registro_art("01/04/2017");
         
-        
-
         controller_art adao = new controller_art();
         boolean result = adao.registerArt(art);
-        if (!result) {
-            res.setAttribute("ErrorRegistroArt", "NO GUARDO");
-            response.sendRedirect("Interfaz/Admin/Gestion.jsp");
-        } else {
-            res.setAttribute("ErrorRegistroArt", "Guardo");
-            response.sendRedirect("Interfaz/Admin/Gestion.jsp");
-
+        item.addProperty("result", result);
+        
+        }catch(Exception e){
+            System.out.println(e);
         }
+        return item.toString();  
+    };
+    
+    public String listarEmpresas(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+         com.google.gson.JsonObject json = new JsonObject();
+         JsonArray array = new JsonArray();
+         ArrayList<Modelo.Empresa> resultado;
+         
+         
+        try{
+         
+        
+        controller_emp edao = new controller_emp();
+        
+         resultado = edao.getEmpresas();
+        for(Empresa result:resultado){
+            JsonObject item = new JsonObject();
+            item.addProperty("ID_EMPRESA_D",result.getId_emp() );
+        item.addProperty("ID_EMAYOR", result.getId_emp_ma());
+        item.addProperty("NIT_EMPRESA_D", result.getNIT_emp());
+        item.addProperty("NOM_EMPRESA_D", result.getNom_emp());
+        item.addProperty("NOM_ENCARGADO_D", result.getNom_encargado());
+        item.addProperty("DOC_ENCARGADO_D", result.getDoc_encargado());
+        item.addProperty("TEL_ENCARGADO_D", result.getTel_encargado());
+        item.addProperty("COR_ENCARGADO_D", result.getCor_encargado());
+        item.addProperty("TIPO_OPERACION_D", result.getTipo_operacion());
+        item.addProperty("VALOR_OPERACION_D",result.getValor_operacion());
+        item.addProperty("FECHA_REGISTRO_D",result.getFecha_registro());
+        array.add(item);
+        }
+    }
+    catch(Exception e){
+     System.out.println(e);
+    }
+      return array.toString();  
     };
              
              

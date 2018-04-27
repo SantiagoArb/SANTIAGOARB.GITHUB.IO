@@ -17,6 +17,7 @@
   <script src="../../js/fosforito_core_groupimage.js" type="text/javascript"></script>
   <script src="../../js/Infor_artistas.js" type="text/javascript"></script>
   <title>Artistas</title>
+  
   <style>
   img.img-circle{
                   width: 100px;
@@ -60,7 +61,24 @@
                                 <li><i class="fa fa-laptop"></i>Información</li>						  	
                             </ol>
                         </div>
-                    </div>  
+                    </div> 
+                    <h1 style="text-align:center;">Artistas</h1>
+ 
+  
+  <div class="col-md-6">
+
+</div>
+<div class="col-md-6">
+    
+  
+</div>
+                    <hr>
+  <GroupImage id="grupo_labor" classcontainer="container" classrow="row" containerrow="col-md-12" containerimg="col-md-3"maxcolumn="4">
+    <objectGroup src="src" title="NOM_ARTISTA" trigger="abrirY">
+
+    </objectGroup>
+  </GroupImage>
+                    <button id="listar" onclick="ServletArtista()">Mostrar Archivo</button>
                 </section>
                 <div class="text-right">
                     <div class="credits">    
@@ -70,20 +88,7 @@
             </section>
             <!--main content end-->
         </section>
-<h1 style="text-align:center;">Artistas</h1>
- 
-  <hr>
-  <GroupImage id="grupo_labor" classcontainer="container" classrow="row" containerrow="col-md-12" containerimg="col-md-3"maxcolumn="4">
-    <objectGroup src="src" title="NOM_ARTISTA" trigger="abrirY">
-
-    </objectGroup>
-  </GroupImage>
-  <div class="col-md-6">
-
-</div>
-<div class="col-md-6">
-  <button onclick="ServletArtista()">Mostrar Archivo</button>
-</div>
+        
 </body>
 
 </html>

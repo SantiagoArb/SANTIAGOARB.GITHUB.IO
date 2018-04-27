@@ -28,7 +28,7 @@ public class DAO_Empresa implements IEmpresa_DAO {
 
     @Override
     public boolean setEmpresa(Empresa emp) {
-        boolean registrar = false;
+        boolean registrar = true;
 
         Connection con = null;
         String sql = "INSERT INTO EMPRESA_DIFUSORA"
@@ -66,20 +66,21 @@ public class DAO_Empresa implements IEmpresa_DAO {
         } catch (SQLException ex) {
             System.out.println("Error: Clase DAO_Empresa, método registrar");
             ex.printStackTrace();
+            registrar = false;
         } 
-        registrar = true;
+        
         return registrar;
     }
 
     @Override
-    public List<Empresa> getEmpresa() {
+    public ArrayList<Empresa> getEmpresa() {
         Connection co = null;
         Statement stm = null;
         ResultSet rs = null;
 
         String sql = "SELECT * FROM EMPRESA_DIFUSORA ORDER BY NOM_EMPRESA_D";
 
-        List<Empresa> listaEmpresa = new ArrayList<Empresa>();
+        ArrayList<Empresa> listaEmpresa = new ArrayList();
 
         try {
             co = DBUtil.getConexion();
@@ -107,7 +108,6 @@ public class DAO_Empresa implements IEmpresa_DAO {
             System.out.println("Error: Clase DAO_Empresa, método obtener");
             e.printStackTrace();
         }
-
         return listaEmpresa;
     }
 

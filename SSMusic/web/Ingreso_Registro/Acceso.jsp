@@ -91,7 +91,7 @@
                 
             }
             function clean(){
-                document.getElementById("P_confirmacion").style="display:none;color: #ff0000;";
+                document.getElementById("P_confirmacion").style="display:none;";
             }
             function processLogin(){
                   if (xMLHttpRequest.readyState == 4 && xMLHttpRequest.status == 200) {
@@ -103,8 +103,10 @@
                           
                       }else{
                           document.getElementById("P_confirmacion").style="display:inline;";
-                          document.getElementById("P_confirmacion").innerHTML="Usuario o contraseña Incorrecto";
-                          myVar = setTimeout(clean, 3000);
+                          document.getElementById("P_confirmacion").style="color:red; font: message-box; font-size: x-large;";
+                          
+                          document.getElementById("P_confirmacion").innerHTML="Usuario y/o contraseña Incorrecto";
+                          myVar = setTimeout(clean, 5000);
                           
                       }
                   }

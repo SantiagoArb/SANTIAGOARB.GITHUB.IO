@@ -25,7 +25,7 @@ public class DAO_Artista implements IArtista_DAO {
 
     @Override
     public boolean setArtista(Artista art) {
-        boolean registrar = false;
+        boolean registrar = true;
 
         Connection con = null;
         String sql = "INSERT INTO ARTISTA"
@@ -44,7 +44,7 @@ public class DAO_Artista implements IArtista_DAO {
         try {
             con = DBUtil.getConexion();
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1,1);
+            ps.setInt(1,art.getId());
             ps.setString(2, art.getNombre_art());
             ps.setString(3, art.getNom_representante());
             ps.setString(4, art.getDoc_representante());
@@ -58,10 +58,12 @@ public class DAO_Artista implements IArtista_DAO {
         } catch (SQLException ex) {
             System.out.println("Error: Clase DAO_Artista, método registrar");
             ex.printStackTrace();
+            registrar = false;
         }
-        registrar = true;
+        
         return registrar;
     }
+    
 
     @Override
     public ArrayList<Artista> getArtistas() {

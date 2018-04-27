@@ -38,8 +38,8 @@ public class controller_emp {
         return result;
     }
 
-    public List<Empresa> getEmpresas() {
-        List<Empresa> emps = new ArrayList<Empresa>();
+    public ArrayList<Empresa> getEmpresas() {
+        ArrayList<Empresa> emps = new ArrayList<Empresa>();
         IEmpresa_DAO edao = new DAO_Empresa();
         emps = edao.getEmpresa();
         return emps;

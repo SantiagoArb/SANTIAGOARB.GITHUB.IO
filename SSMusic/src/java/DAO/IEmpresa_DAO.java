@@ -6,6 +6,7 @@
 package DAO;
 
 import Modelo.Empresa;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -16,7 +17,7 @@ public interface IEmpresa_DAO {
 
     public boolean setEmpresa(Empresa emp);
 
-    public List<Empresa> getEmpresa();
+    public ArrayList<Empresa> getEmpresa();
 
     public boolean updateEmpresa(Empresa emp);
 

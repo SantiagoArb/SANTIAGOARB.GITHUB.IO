@@ -16,6 +16,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -62,15 +63,19 @@ public class Ingreso extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        HttpSession session=request.getSession();  
+        
         String nick = request.getParameter("nick");
         String pass = request.getParameter("password");
         System.out.println("Nick: "+nick);
         System.out.println("pass: "+pass);
        response.setContentType("text/html");
-        response.getWriter().write(processLogin(nick,pass));
+       String user_logged = processLogin(nick,pass, session);
+       
+        response.getWriter().write(user_logged);
     }
     
-    public String processLogin(String nick, String pass){
+    public String processLogin(String nick, String pass, HttpSession session){
         com.google.gson.JsonObject json = new JsonObject();
         Usuario user = new Usuario();
         Usuario resultado;
@@ -94,6 +99,18 @@ public class Ingreso extends HttpServlet {
         item.addProperty("ID_EMPRESA_U", resultado.getFecha_registro());
         array.add(item);
         
+        session.setAttribute("ID_USUARIO", resultado.getId());
+        session.setAttribute("TIPO_PERFIL", resultado.getTipo_perfil());
+        session.setAttribute("USERNAME", resultado.getUsername());
+        session.setAttribute("PASS", resultado.getPass());
+        session.setAttribute("NOMBRES", resultado.getNombres());
+        session.setAttribute("APELLIDO1", resultado.getApellido1());
+        session.setAttribute("APELLIDO2", resultado.getApellido2());
+        session.setAttribute("DOCUMENTO", resultado.getDocumento());
+        session.setAttribute("CORREO", resultado.getCorreo());
+        session.setAttribute("TELEFONO", resultado.getTelefono());
+        session.setAttribute("DIRECCION", resultado.getDireccion());
+        session.setAttribute("ID_EMPRESA_U", resultado.getFecha_registro());
         json.add("respuesta", array);
         return json.toString();
     }

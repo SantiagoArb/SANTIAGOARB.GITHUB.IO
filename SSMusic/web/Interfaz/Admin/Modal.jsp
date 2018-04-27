@@ -6,9 +6,10 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <!--Modal para el Registro de Materias-->                        
+<script src="../../js/gestion.js" type="text/javascript"></script>
 <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="Modal_RegistrarEmp" >
     <div class="modal-dialog modal-lg" role="document">
-        <form method="post" action="../../Registros">
+       
             <div class="modal-content">
                 <div class="modal-header">
                     <div class="form_top">
@@ -60,29 +61,21 @@
                                  <label for="VALOR_OPERACION_D">Valor Operacion </label>
                                  <input name="VALOR_OPERACION_D" id='VALOR_OPERACION_D' required autofocus type='text' placeholder="Valor Operacion" class="form-control"/>
                              </div>
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
                     </div>
                          </div>
                 </div>
                 <div class="modal-footer">
-                    <button id="RegistroEmpresa" type="submit" class="btn btn-default" name="RegistroEmpresa">Registrar</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                    <button id="RegistroEmpresa" onclick="ServletGuardarEmpresa();" class="btn btn-default" name="RegistroEmpresa">Registrar</button>
+                    <button id="btn_emp_close" type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
                 </div>
             </div>
-        </form>
+        
     </div>
 </div>
     <!--Modal Registro Artista -->                     
 <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="Modal_RegistrarArt" >
     <div class="modal-dialog modal-lg" role="document">
-        <form method="post" action="../../Registros">
+        
             <div class="modal-content">
                 <div class="modal-header">
                     <div class="form_top">
@@ -96,7 +89,7 @@
                          <div class="container">
                          <div class="col-sm-2">
                                      <label for="ID_ARTISTA">Empresa: </label>
-                             <select class="form-control">
+                             <select id="select_empresas" class="form-control">
                                  <option value="">Seleccione</option>
                              </select>
                                      </div>
@@ -106,45 +99,41 @@
                              
                                  
                                  
+                            
                              <div class="col-sm-6">
                                  <br/>
-                                 <label for="ID_ARTISTA">Identificacion: </label>
-                                 <input name="ID_ARTISTA" id='ID_ARTISTA' required autofocus type='text' placeholder="Identificacion/Nit" class="form-control"/>
-                             </div>
-                             <div class="col-sm-6">
-                                 <br/>
-                                 <label for="NOM_ARTISTA">Nombre: </label>
+                                 <label for="NOM_ARTISTA">Nombre Artista: </label>
                                  <input name="NOM_ARTISTA" id='NOM_ARTISTA' required autofocus type='text'placeholder="Nombre Artista" class="form-control"/>
                              </div>
                              <div class="col-sm-6">
                                  <br/>
-                                 <label for="NOM_REPRESENTANTE">Nombre: </label>
+                                 <label for="NOM_REPRESENTANTE">Nombre Representante: </label>
                                  <input name="NOM_REPRESENTANTE" id='NOM_REPRESENTANTE' required autofocus type='text' placeholder="Nombre Representante" class="form-control"/>
                              </div>
                              <div class="col-sm-6">
                                  <br/>
-                                 <label for="DOC_REPRESENTANTE">Documento: </label>
+                                 <label for="DOC_REPRESENTANTE">Documento Representante: </label>
                                  <input name="DOC_REPRESENTANTE" id='DOC_REPRESENTANTE' required autofocus type='text' placeholder="Documento Representante" class="form-control"/>
                              </div>
                              <div class="col-sm-6">
                                  <br/>
-                                 <label for="TEL_REPRESENTANTE">Telefono: </label>
+                                 <label for="TEL_REPRESENTANTE">Telefono Representante: </label>
                                  <input name="TEL_REPRESENTANTE" id='TEL_REPRESENTANTE' required autofocus type='text' placeholder="Telefono Representante" class="form-control"/>
                              </div>
                              <div class="col-sm-6">
                                  <br/>
-                                 <label for="COR_REPRESENTANTE">Correo: </label>
+                                 <label for="COR_REPRESENTANTE">Correo Representante: </label>
                                  <input name="COR_REPRESENTANTE" id='COR_REPRESENTANTE' required autofocus type='text' placeholder="Correo Representante" class="form-control"/>
                              </div>
                              </div>
                          </div>
                 </div>
                 <div class="modal-footer">
-                    <button id="RegistroArtista" type="submit" class="btn btn-default" name="RegistroArtista">Registrar</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                    <button id="RegistroArtista" onclick="ServletGuardarArtista();" class="btn btn-default" name="RegistroArtista">Registrar</button>
+                    <button id="btn_art_close" type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
                 </div>
             </div>
-        </form>
+        
     </div>
 </div>                         
 

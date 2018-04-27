@@ -35,11 +35,11 @@
                             <div class="profile-widget profile-widget-info">
                                 <div class="panel-body">
                                     <div class="col-lg-2 col-sm-2">
-                                        <h4>Jenifer Smith</h4>               
+                                        <h4>${sessionScope['NOMBRES']} ${sessionScope['APELLIDO1']}</h4>               
                                         <div class="follow-ava">
                                             <img src="../../img/profile-widget-avatar.jpg" alt="">
                                         </div>
-                                        <h6>Administrator</h6>
+                                        <h6>${sessionScope['TIPO_PERFIL']}</h6>
                                     </div>
                                     <div class="col-lg-4 col-sm-4 follow-info">
                                         <p>Hello I’m Jenifer Smith, a leading expert in interactive and creative design.</p>
@@ -121,10 +121,10 @@
                                                     <h1>Bio Graph</h1>
                                                     <div class="row">
                                                         <div class="bio-row">
-                                                            <p><span>First Name </span>: Jenifer </p>
+                                                            <p><span>First Name </span>: ${sessionScope['NOMBRES']} </p>
                                                         </div>
                                                         <div class="bio-row">
-                                                            <p><span>Last Name </span>: Smith</p>
+                                                            <p><span>Last Name </span>: ${sessionScope['APELLIDO1']} ${sessionScope['APELLIDO2']}</p>
                                                         </div>                                              
                                                         <div class="bio-row">
                                                             <p><span>Birthday</span>: 27 August 1987</p>
@@ -136,13 +136,13 @@
                                                             <p><span>Occupation </span>: UI Designer</p>
                                                         </div>
                                                         <div class="bio-row">
-                                                            <p><span>Email </span>:jenifer@mailname.com</p>
+                                                            <p><span>Email </span>: ${sessionScope['CORREO']}</p>
                                                         </div>
                                                         <div class="bio-row">
-                                                            <p><span>Mobile </span>: (+6283) 456 789</p>
+                                                            <p><span>Mobile </span>: ${sessionScope['TELEFONO']}</p>
                                                         </div>
                                                         <div class="bio-row">
-                                                            <p><span>Phone </span>:  (+021) 956 789123</p>
+                                                            <p><span>Phone </span>:  ${sessionScope['TELEFONO']}</p>
                                                         </div>
                                                     </div>
                                                 </div>
