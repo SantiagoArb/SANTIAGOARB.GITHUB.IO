@@ -14,6 +14,7 @@ import java.text.SimpleDateFormat;
 public class Usuario {
 
     private int id;
+    private int id_empresa;
     private String tipo_perfil;
     private String username;
     private String pass;
@@ -29,7 +30,7 @@ public class Usuario {
     public Usuario() {
     }
 
-    public Usuario(int id, String tipo_perfil, String username, String pass, String nombres, String apellido1, String apellido2, String correo, String telefono, String direccion, String documento, String fecha_registro) {
+    public Usuario(int id,int id_empresa, String tipo_perfil, String username, String pass, String nombres, String apellido1, String apellido2, String correo, String telefono, String direccion, String documento, String fecha_registro) {
         this.id = id;
         this.tipo_perfil = tipo_perfil;
         this.username = username;
@@ -42,6 +43,14 @@ public class Usuario {
         this.direccion = direccion;
         this.documento = documento;
         this.fecha_registro = fecha_registro;
+    }
+
+    public int getId_empresa() {
+        return id_empresa;
+    }
+
+    public void setId_empresa(int id_empresa) {
+        this.id_empresa = id_empresa;
     }
 
     

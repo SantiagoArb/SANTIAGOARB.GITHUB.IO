@@ -6,7 +6,8 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <!--Modal para el Registro de Materias-->                        
-<script src="../../js/gestion.js" type="text/javascript"></script>
+<script src="js/gestion.js" type="text/javascript"></script>
+<script src="js/gestion_operarios.js" type="text/javascript"></script>
 <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="Modal_RegistrarEmp" >
     <div class="modal-dialog modal-lg" role="document">
        
@@ -65,7 +66,7 @@
                          </div>
                 </div>
                 <div class="modal-footer">
-                    <button id="RegistroEmpresa" onclick="ServletGuardarEmpresa();" class="btn btn-default" name="RegistroEmpresa">Registrar</button>
+                    <button id="RegistroEmpresa" onclick="GuardarEmpresa();" class="btn btn-default" name="RegistroEmpresa">Registrar</button>
                     <button id="btn_emp_close" type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
                 </div>
             </div>
@@ -129,7 +130,7 @@
                          </div>
                 </div>
                 <div class="modal-footer">
-                    <button id="RegistroArtista" onclick="ServletGuardarArtista();" class="btn btn-default" name="RegistroArtista">Registrar</button>
+                    <button id="RegistroArtista" onclick="GuardarArtista();" class="btn btn-default" name="RegistroArtista">Registrar</button>
                     <button id="btn_art_close" type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
                 </div>
             </div>
@@ -157,6 +158,78 @@
             </div>
         </form>
         <!--End -->
+    </div>
+</div>
+
+<!--Modal Registro Operario-->
+<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="Modal_RegistrarOp" >
+    <div class="modal-dialog modal-lg" role="document">
+       
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="form_top">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h2>Registro de <span>Operario</span></h2>
+                    </div> 
+                </div>
+                <div class="modal-body" >
+                    <div class="container-fluid" >
+                         <p style="color: #ff0000">${sessionScope['ErrorRegistroEmp']}</p>
+                         <div class="col-sm-12">
+                             <div class="col-sm-6">
+                                 <br/>
+                                 <label for="USERNAME">Usuario: </label>
+                                 <input name="USERNAME" id='USERNAME' required autofocus type='text' placeholder="Usuario" class="form-control"/>
+                             </div>
+                             <div class="col-sm-6">
+                                 <br/>
+                                 <label for="PASS">Contraseña: </label>
+                                 <input name="PASS" id='PASS' required autofocus type='text'placeholder="Contraseña" class="form-control"/>
+                             </div>
+                             <div class="col-sm-6">
+                                 <br/>
+                                 <label for="NOMBRES">Nombres: </label>
+                                 <input name="NOMBRES" id='NOMBRES' required autofocus type='text' placeholder="Nombres" class="form-control"/>
+                             </div>
+                             <div class="col-sm-6">
+                                 <br/>
+                                 <label for="APELLIDO1">Primer Apellido: </label>
+                                 <input name="APELLIDO1" id='APELLIDO1' required autofocus type='text' placeholder="Primer Apellido " class="form-control"/>
+                             </div>
+                             <div class="col-sm-6">
+                                 <br/>
+                                 <label for="APELLIDO2">Segundo Apellido: </label>
+                                 <input name="APELLIDO2" id='APELLIDO2' required autofocus type='text' placeholder="Segundo Apellido" class="form-control"/>
+                             </div>
+                             <div class="col-sm-6">
+                                 <br/>
+                                 <label for="DOCUMENTO">Documento: </label>
+                                 <input name="DOCUMENTO" id='DOCUMENTO' required autofocus type='text' placeholder="Documento" class="form-control"/>
+                             </div>
+                             <div class="col-sm-6">
+                                 <br/>
+                                 <label for="CORREO">Email: </label>
+                                 <input name="CORREO" id='CORREO' required autofocus type='text' placeholder="Email" class="form-control"/>
+                             </div>
+                             <div class="col-sm-6">
+                                 <br/>
+                                 <label for="TELEFONO">Telefono: </label>
+                                 <input name="TELEFONO" id='TELEFONO' required autofocus type='text' placeholder="Telefono" class="form-control"/>
+                             </div>
+                             <div class="col-sm-6">
+                                 <br/>
+                                 <label for="DIRECCION">Direccion: </label>
+                                 <input name="DIRECCION" id='DIRECCION' required autofocus type='text' placeholder="Direccion" class="form-control"/>
+                             </div>
+                    </div>
+                         </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="RegistroOperario" onclick="RegistrarUsuario();" class="btn btn-default" name="RegistroOperario">Registrar</button>
+                    <button id="btn_ope_close" type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                </div>
+            </div>
+        
     </div>
 </div>
 

@@ -6,16 +6,21 @@
 package DAO;
 
 import Conexion.DBUtil;
+import Metodos.Calendario;
 import Modelo.Usuario;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 
 /**
  *
@@ -24,42 +29,54 @@ import java.util.logging.Logger;
 public class DAO_Usuario implements IUsuario_DAO {
 
     @Override
-    public boolean setUser(Usuario user) {
-        boolean registrar = false;
-
+    public Boolean setUser(Usuario user) {
+        boolean registrar = true;
+        
         Connection con = null;
         String sql = "INSERET INTO USUARIO"
                 + "("
-                + "ID_PERFIL, "
+                + "ID_USUARIO, "
+                + "ID_EMPRESA_U, "
                 + "TIPO_PERFIL, "
                 + "USERNAME, "
                 + "PASS, "
                 + "NOMBRES, "
                 + "APELLIDO1, "
                 + "APELLIDO2, "
+                + "DOCUMENTO, "
+                + "CORREO, "
+                + "TELEFONO, "
+                + "DIRECCION, "
                 + "FECHA_REGISTRO"
                 + ") "
-                + "VALUES(?,?,?,?,?,?,?,?)";
+                + "VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
         try {
             con = DBUtil.getConexion();
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setNull(1, 0);
-            ps.setString(2, user.getTipo_perfil());
-            ps.setString(3, user.getUsername());
-            ps.setString(4, user.getPass());
-            ps.setString(5, user.getNombres());
-            ps.setString(6, user.getApellido1());
-            ps.setString(7, user.getApellido2());
-            ps.setString(8, "TO_DATE('" + user.getFecha_registro() + "', 'dd-MM-yyyy')");
+            ps.setInt(2, user.getId_empresa());
+            ps.setString(3, user.getTipo_perfil());
+            ps.setString(4, user.getUsername());
+            ps.setString(5, user.getPass());
+            ps.setString(6, user.getNombres());
+            ps.setString(7, user.getApellido1());
+            ps.setString(8, user.getApellido2());
+            ps.setString(9,user.getDocumento());
+            ps.setString(10, user.getCorreo());
+            ps.setString(11, user.getTelefono());
+            ps.setString(12, user.getDireccion());
+            ps.setString(13, user.getFecha_registro());
+            
             ps.executeQuery();
             ps.close();
             con.close();
         } catch (SQLException e) {
             System.out.println("Error: Clase DAO_Usuario, método registrar");
             e.printStackTrace();
-        }
-        registrar = true;
+            registrar = false;
+        } 
+        
         return registrar;
     }
 

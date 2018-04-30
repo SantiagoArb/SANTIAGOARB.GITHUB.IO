@@ -12,10 +12,12 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="shortcut icon" href="../../favicon.ico">
+  
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <script src="../../js/Map.js" type="text/javascript"></script>
   <script src="../../js/fosforito_core_groupimage.js" type="text/javascript"></script>
-  <script src="../../js/Infor_artistas.js" type="text/javascript"></script>
+  <script src="js/Infor_artistas.js" type="text/javascript"></script>
+ 
   <title>Artistas</title>
   
   <style>

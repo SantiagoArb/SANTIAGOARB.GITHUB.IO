@@ -20,9 +20,10 @@ public class controller_user {
     public controller_user() {
     }
 
-    public void registerUser(Usuario user) {
+    public Boolean registerUser(Usuario user) {
         IUsuario_DAO udao = new DAO_Usuario();
-        udao.setUser(user);
+       Boolean result = udao.setUser(user);
+        return result;
     }
     
     public void updateUser(Usuario user) {

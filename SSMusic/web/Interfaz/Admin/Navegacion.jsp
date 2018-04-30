@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <!--header start-->
 <meta charset="utf-8">
-<script src="../../js/Infor_artistas.js" type="text/javascript"></script>
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Creative - Bootstrap 3 Responsive Admin Template">
 <meta name="author" content="GeeksLabs">
@@ -96,6 +96,7 @@
                     <li><a class="" href="Gestion.jsp">Gestión</a></li>
                     <li><a class="" href="">Información Empresas</a></li>
                     <li><a onclick="ServletArtista();" class="" href="info_artistas.jsp">Información Artistas</a></li>
+                    <li><a onclick="" class="" href="Operarios.jsp">Gestión Operarios</a></li>
                 </ul>
             </li>
         </ul>

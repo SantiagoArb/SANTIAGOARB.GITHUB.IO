@@ -10,7 +10,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <script src="../../js/gestion.js" type="text/javascript"></script>
+        <script src="js/gestion.js" type="text/javascript"></script>
         <link rel="shortcut icon" href="../../favicon.ico">
 
         <title>S&SMusic - Gestión</title>
@@ -42,7 +42,7 @@
                                             <option>Ventas</option>
                                         </select>
                                         <button type="button" class="btn btn-xs btn-success BTN_Accion" role="button" data-toggle="modal" data-target="#Modal_RegistrarEmp" data-id="1" data-accion="Registrar Empresa">Registrar Empresa</button>
-                                        <button type="button" class="btn btn-xs btn-primary BTN_Accion" role="button" onclick="ServletListarEmpresa();" data-toggle="modal" data-target="#Modal_RegistrarArt" data-id="2" data-accion="Registrar Artista">Registrar Artista</button>
+                                        <button type="button" class="btn btn-xs btn-primary BTN_Accion" role="button" onclick="ListarEmpresa();" data-toggle="modal" data-target="#Modal_RegistrarArt" data-id="2" data-accion="Registrar Artista">Registrar Artista</button>
                                     </header>                      
                                     <div id="table-responsive">
                                         <table id="Izi" class="table table-striped table-advance table-hover">

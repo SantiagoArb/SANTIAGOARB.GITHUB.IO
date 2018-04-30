@@ -7,10 +7,12 @@ package Servlets;
 
 import Controladores.controller_art;
 import Controladores.controller_emp;
+import Controladores.controller_user;
 import DAO.IEmpresa_DAO;
 import Metodos.Calendario;
 import Modelo.Artista;
 import Modelo.Empresa;
+import Modelo.Usuario;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import java.io.IOException;
@@ -89,6 +91,10 @@ public class Registros extends HttpServlet {
         if(request.getParameter("listarEmpresa") != null) {
             response.setContentType("text/html");
         response.getWriter().write(listarEmpresas(request,response));
+        };
+        if(request.getParameter("RegistroOperario") != null) {
+            response.setContentType("text/html");
+        response.getWriter().write(RegistroOperario(request,response));
         };
 
     }
@@ -188,6 +194,41 @@ public class Registros extends HttpServlet {
      System.out.println(e);
     }
       return array.toString();  
+    };
+    
+    public String RegistroOperario(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        JsonObject item = new JsonObject();
+        try{
+          
+        Calendario fechaR = new Calendario();
+        String FECHA_REGISTRO = fechaR.Fecha_Registro();
+        System.out.println("fecha en servlet: "+FECHA_REGISTRO);
+        Usuario user = new Usuario();
+        user.setId(1);
+        user.setId_empresa(46);
+       user.setTipo_perfil("Operario");
+       user.setUsername(request.getParameter("USERNAME"));
+       user.setPass(request.getParameter("PASS"));
+       user.setNombres(request.getParameter("NOMBRES"));
+       user.setApellido1(request.getParameter("APELLIDO1"));
+       user.setApellido2(request.getParameter("APELLIDO2"));
+       user.setDocumento(request.getParameter("DOCUMENTO"));
+       user.setCorreo(request.getParameter("CORREO"));
+       user.setTelefono(request.getParameter("TELEFONO"));
+       user.setDireccion(request.getParameter("DIRECCION"));
+       user.setFecha_registro(FECHA_REGISTRO);
+       controller_user edao = new controller_user();
+       boolean result = edao.registerUser(user);
+        
+        item.addProperty("result", result);
+        
+
+    }
+    catch(Exception e){
+     System.out.println(e);
+    }
+      return item.toString();  
     };
              
              
