@@ -63,19 +63,19 @@ public class Ingreso extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession session=request.getSession();  
+        HttpSession session = request.getSession();        
         
         String nick = request.getParameter("nick");
         String pass = request.getParameter("password");
-        System.out.println("Nick: "+nick);
-        System.out.println("pass: "+pass);
-       response.setContentType("text/html");
-       String user_logged = processLogin(nick,pass, session);
-       
+        System.out.println("Nick: " + nick);
+        System.out.println("pass: " + pass);
+        response.setContentType("text/html");
+        String user_logged = processLogin(nick, pass, session);
+        
         response.getWriter().write(user_logged);
     }
     
-    public String processLogin(String nick, String pass, HttpSession session){
+    public String processLogin(String nick, String pass, HttpSession session) {
         com.google.gson.JsonObject json = new JsonObject();
         Usuario user = new Usuario();
         Usuario resultado;
@@ -126,7 +126,10 @@ public class Ingreso extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        response.setContentType("text/plain");
+        String user = request.getParameter("nick");
+        PrintWriter out = response.getWriter();
+        out.print("usuario o contraseña incorrectos");
     }
 
     /**
