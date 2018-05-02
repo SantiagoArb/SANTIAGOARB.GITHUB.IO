@@ -20,10 +20,6 @@
         <servlet-name>Artista</servlet-name>
         <servlet-class>Servlets.Artista</servlet-class>
     </servlet>
-    <servlet>
-        <servlet-name>prueba</servlet-name>
-        <servlet-class>Servlets.prueba</servlet-class>
-    </servlet>
     <servlet-mapping>
         <servlet-name>Ingreso</servlet-name>
         <url-pattern>/Ingreso</url-pattern>
@@ -39,10 +35,6 @@
     <servlet-mapping>
         <servlet-name>Artista</servlet-name>
         <url-pattern>/Artista</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>prueba</servlet-name>
-        <url-pattern>/prueba</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
