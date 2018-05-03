@@ -5,7 +5,7 @@
  * @see https://datatables.net/
  */
 function Tablas() {
-    //la funcion Tablas(), sirve para cambiar los datos almancenados en la misma al momento de dar click en el select #tipo_gestion
+//la funcion Tablas(), sirve para cambiar los datos almancenados en la misma al momento de dar click en el select #tipo_gestion
     $.post("comboT.jsp", $("#data").serialize(), function (data) {
         /* @param {tabla_grupos} Llama al table con id ='tabla_grupos', para que se muestre en la vista */
         $("#tabla_grupos").html(data);
@@ -24,7 +24,7 @@ function mostrarTablas() {
 }
 
 $(document).ready(function () {
-    var table = $('#Izi').DataTable({
+    var table = $('#table_Empresas').DataTable({
         language: {
             sProcessing: "Procesando...",
             sLengthMenu: "Mostrar _MENU_  Registros",
@@ -50,9 +50,9 @@ $(document).ready(function () {
             }
         },
         ajax: {
-            method: "POST",
-            url: "../../Otro",
-            dataSrc: "datos"
+            method: "GET",
+            url: "../../Datos",
+            dataSrc: "Empresas"
         },
         select: "single",
         columns: [
@@ -66,56 +66,57 @@ $(document).ready(function () {
                 },
                 width: '15px'
             },
-            {data: "id"},
             {data: "NIT_Empresa"},
             {data: "Nom_Empresa"},
             {data: "Tipo_operacion"},
-            {data: "Valor_operacion"}
+            {
+                data: "Valor_operacion",
+                render: $.fn.dataTable.render.number(',', '.', 0, '$')
+            },
+            {data: "acciones"}
         ],
         order: [[1, 'asc']],
         dom: 'fBrtip',
         buttons: [
             {
-                extend:    'excelHtml5',
-                text:      '<i class="fa fa-file-excel-o"></i>',
+                extend: 'excelHtml5',
+                text: '<i class="fa fa-file-excel-o"></i>',
                 titleAttr: 'Excel',
                 className: 'btn btn-success btn-sm m-5 width-140 assets-select-btn export-print'
             },
             {
-                extend:    'csvHtml5',
-                text:      '<i class="fa fa-file-text-o"></i>',
+                extend: 'csvHtml5',
+                text: '<i class="fa fa-file-text-o"></i>',
                 titleAttr: 'CSV',
                 className: 'btn btn-info btn-sm m-5 width-140 assets-select-btn export-print'
             },
             {
-                extend:    'pdfHtml5',
-                text:      '<i class="fa fa-file-pdf-o"></i>',
+                extend: 'pdfHtml5',
+                text: '<i class="fa fa-file-pdf-o"></i>',
                 titleAttr: 'PDF',
                 className: 'btn btn-warning btn-sm m-5 width-140 assets-select-btn export-print'
             }
         ]
-        
+
     });
-    $('#Izi tbody').on('click', 'td.details-control', function () {
+    $('#table_Empresas tbody').on('click', 'td.details-control', function () {
         var tr = $(this).closest('tr');
         var tdi = tr.find('i.fa');
         var row = table.row(tr);
-
         if (row.child.isShown()) {
-            // This row is already open - close it
+// This row is already open - close it
             row.child.hide();
             tr.removeClass('shown');
             tdi.first().removeClass('fa-minus-square');
             tdi.first().addClass('fa-plus-square');
         } else {
-            // Open this row
-            row.child(format(row.data())).show();
+// Open this row
+            row.child(Empresasformat(row.data())).show();
             tr.addClass('shown');
             tdi.first().removeClass('fa-plus-square');
             tdi.first().addClass('fa-minus-square');
         }
     });
-
     table.on('user-select', function (e, dt, type, cell, originalEvent) {
         if ($(cell.node()).hasClass('details-control')) {
             e.preventDefault();
@@ -128,20 +129,32 @@ $(document).ready(function () {
         $('#Estudiante').html(nombre);
     });
 });
-function format(d) {
+function Empresasformat(d) {
     // `d` is the original data object for the row
     return '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">' +
             '<tr>' +
-            '<td>Full name:</td>' +
-            '<td>' + d.nombres + '</td>' +
+            '<td>Fecha de Registro:</td>' +
+            '<td>' + d.FECHA_REGISTRO_D + '</td>' +
             '</tr>' +
             '<tr>' +
-            '<td>Extension number:</td>' +
-            '<td>' + '</td>' +
+            '<td>Nombre del Encargado:</td>' +
+            '<td>' + d.NOM_ENCARGADO_D + '</td>' +
             '</tr>' +
             '<tr>' +
-            '<td>Extra info:</td>' +
-            '<td>And any further details here (images etc)...</td>' +
+            '<td>Documento del Encargo:</td>' +
+            '<td>' + d.DOC_ENCARGADO_D + '</td>' +
+            '</tr>' +
+            '<tr>' +
+            '<td>Telefono del Encargado:</td>' +
+            '<td>' + d.TEL_ENCARGADO_D + '</td>' +
+            '</tr>' +
+            '<tr>' +
+            '<td>Correo del Encargado:</td>' +
+            '<td>' + d.COR_ENCARGADO_D + '</td>' +
+            '</tr>' +
+            '<tr>' +
+            '<td>Informacion Adicional:</td>' +
+            '<td>Descripcion de la empresa...</td>' +
             '</tr>' +
             '</table>';
 }

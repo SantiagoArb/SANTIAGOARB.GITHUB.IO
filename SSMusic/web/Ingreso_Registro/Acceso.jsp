@@ -97,10 +97,7 @@
                   if (xMLHttpRequest.readyState == 4 && xMLHttpRequest.status == 200) {
                        var resp = eval('(' + xMLHttpRequest.responseText + ')');
                       if(resp.respuesta[0].ID_USUARIO !== 0){
-                          window.location.replace("http://localhost:17155/SSMusic/Interfaz/Admin/Inicio.jsp");
-                          
-                          
-                          
+                          window.location.href("../Interfaz/Admin/Inicio.jsp");     
                       }else{
                           document.getElementById("P_confirmacion").style="display:inline;";
                           document.getElementById("P_confirmacion").style="color:red; font: message-box; font-size: x-large;";
