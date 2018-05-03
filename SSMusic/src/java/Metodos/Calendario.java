@@ -21,7 +21,7 @@ public class Calendario {
         String sqlDate = fechaString(cal);
         
         java.sql.Time sqlTime = new java.sql.Time(lnmilisegundos);
-        String f = sqlDate + " " + sqlTime;
+        String f = sqlDate;
         return f;
     }
 

@@ -6,19 +6,16 @@
 package DAO;
 
 import Conexion.DBUtil;
+import Controladores.controller_log;
+import Modelo.Artista;
 import Modelo.Empresa;
+import Modelo.Log;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -27,7 +24,7 @@ import java.util.logging.Logger;
 public class DAO_Empresa implements IEmpresa_DAO {
 
     @Override
-    public boolean setEmpresa(Empresa emp) {
+    public boolean setEmpresa(Empresa emp, Log log) {
         boolean registrar = true;
 
         Connection con = null;
@@ -49,7 +46,7 @@ public class DAO_Empresa implements IEmpresa_DAO {
         try {
             con = DBUtil.getConexion();
             try (PreparedStatement ps = con.prepareStatement(sql)) {
-                ps.setInt(1, 44);
+                ps.setInt(1, 1);
                 ps.setInt(2, 2);
                 ps.setString(3, emp.getNIT_emp());
                 ps.setString(4, emp.getNom_emp());
@@ -63,6 +60,8 @@ public class DAO_Empresa implements IEmpresa_DAO {
                 ps.executeQuery();
             }
             con.close();
+            controller_log ldao=new controller_log();
+            ldao.registerLog(log);
         } catch (SQLException ex) {
             System.out.println("Error: Clase DAO_Empresa, método registrar");
             ex.printStackTrace();
@@ -111,13 +110,33 @@ public class DAO_Empresa implements IEmpresa_DAO {
         return listaEmpresa;
     }
 
-    @Override
-    public boolean updateEmpresa(Empresa emp) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+   @Override
+    public boolean deleteEmpresa(Empresa emp, Log log) {
+        boolean eliminar = true;
+        Connection con = null;
+
+        String sql = "DELETE FROM ARTISTA WHERE NOM_ARTISTA = ?";
+
+        try {
+            con = DBUtil.getConexion();
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, emp.getNom_emp());
+            ps.executeQuery();
+            ps.close();
+            controller_log ldao=new controller_log();
+            ldao.registerLog(log);
+            
+        } catch (SQLException e) {
+            System.out.println("Error: Clase DAO_Artista, método eliminar");
+            e.printStackTrace();
+            eliminar = false;
+        }
+        return eliminar;
+
     }
 
     @Override
-    public boolean deleteEmpresa(Empresa emp) {
+    public boolean updateEmpresa(Empresa emp) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

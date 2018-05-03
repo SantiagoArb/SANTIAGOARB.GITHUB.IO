@@ -20,7 +20,7 @@
                 </div>
                 <div class="modal-body" >
                     <div class="container-fluid" >
-                         <p style="color: #ff0000">${sessionScope['ErrorRegistroEmp']}</p>
+                         <p id="mensaje_Remp" style="color: #ff0000">${sessionScope['ErrorRegistroEmp']}</p>
                          <div class="col-sm-12">
                              <div class="col-sm-6">
                                  <br/>
@@ -86,7 +86,7 @@
                 </div>
                 <div class="modal-body" >
                     <div class="container-fluid" >
-                         <p style="color: #ff0000">${sessionScope['ErrorRegistroArt']}</p>
+                         <p id="mensaje_Rart" style="color: #ff0000">${sessionScope['ErrorRegistroArt']}</p>
                          <div class="container">
                          <div class="col-sm-2">
                                      <label for="ID_ARTISTA">Empresa: </label>
@@ -174,7 +174,7 @@
                 </div>
                 <div class="modal-body" >
                     <div class="container-fluid" >
-                         <p style="color: #ff0000">${sessionScope['ErrorRegistroEmp']}</p>
+                         <p id="mensaje_Rope" style="color: #ff0000">${sessionScope['ErrorRegistroEmp']}</p>
                          <div class="col-sm-12">
                              <div class="col-sm-6">
                                  <br/>

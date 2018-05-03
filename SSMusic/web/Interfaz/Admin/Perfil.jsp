@@ -133,7 +133,7 @@
                                                             <p><span>Country </span>: United</p>
                                                         </div>
                                                         <div class="bio-row">
-                                                            <p><span>Occupation </span>: UI Designer</p>
+                                                            <p><span>Occupation </span>: ${sessionScope['ID_USUARIO']}</p>
                                                         </div>
                                                         <div class="bio-row">
                                                             <p><span>Email </span>: ${sessionScope['CORREO']}</p>

@@ -1,6 +1,9 @@
 var xMLHttpRequest = new XMLHttpRequest();
+            var id_user = document.getElementById("iduser").innerHTML;
+            
+            
+            
             function GuardarEmpresa() {
-               
                var NIT_EMPRESA_D = document.getElementById("NIT_EMPRESA_D").value;
                var NOM_EMPRESA_D = document.getElementById("NOM_EMPRESA_D").value;
                var NOM_ENCARGADO_D= document.getElementById("NOM_ENCARGADO_D").value;
@@ -9,7 +12,8 @@ var xMLHttpRequest = new XMLHttpRequest();
                var COR_ENCARGADO_D = document.getElementById("COR_ENCARGADO_D").value;
                var TIPO_OPERACION_D = document.getElementById("TIPO_OPERACION_D").value;
                var VALOR_OPERACION_D = document.getElementById("VALOR_OPERACION_D").value;
-                xMLHttpRequest.open("Post", "../../Registros?NIT_EMPRESA_D="+NIT_EMPRESA_D+"&NOM_EMPRESA_D="+NOM_EMPRESA_D+"&NOM_ENCARGADO_D="+NOM_ENCARGADO_D+"&DOC_ENCARGADO_D="+DOC_ENCARGADO_D+"&TEL_ENCARGADO_D="+TEL_ENCARGADO_D+"&COR_ENCARGADO_D="+COR_ENCARGADO_D+"&TIPO_OPERACION_D="+TIPO_OPERACION_D+"&VALOR_OPERACION_D="+VALOR_OPERACION_D+"&RegistroEmpresa=true", true);
+               
+                xMLHttpRequest.open("Post", "../../Registros?NIT_EMPRESA_D="+NIT_EMPRESA_D+"&NOM_EMPRESA_D="+NOM_EMPRESA_D+"&NOM_ENCARGADO_D="+NOM_ENCARGADO_D+"&DOC_ENCARGADO_D="+DOC_ENCARGADO_D+"&TEL_ENCARGADO_D="+TEL_ENCARGADO_D+"&COR_ENCARGADO_D="+COR_ENCARGADO_D+"&TIPO_OPERACION_D="+TIPO_OPERACION_D+"&VALOR_OPERACION_D="+VALOR_OPERACION_D+"&ID_USUARIO_LOG="+id_user+"&RegistroEmpresa=true", true);
                 xMLHttpRequest.onreadystatechange = PostGuardarEmpresa;
                 xMLHttpRequest.send(null);
                 
@@ -20,11 +24,18 @@ var xMLHttpRequest = new XMLHttpRequest();
                        var resp = eval('(' + xMLHttpRequest.responseText + ')');
                        console.log(resp);
                        if(resp.result === true){
-                           document.getElementById("btn_emp_close").click();
+                           document.getElementById("mensaje_Remp").innerHTML="Almacenado con Exito";
+               document.getElementById("NIT_EMPRESA_D").value="";
+               document.getElementById("NOM_EMPRESA_D").value="";
+               document.getElementById("NOM_ENCARGADO_D").value="";
+               document.getElementById("DOC_ENCARGADO_D").value="";
+               document.getElementById("TEL_ENCARGADO_D").value="";
+               document.getElementById("COR_ENCARGADO_D").value="";
+               document.getElementById("TIPO_OPERACION_D").value="";
+               document.getElementById("VALOR_OPERACION_D").value="";
+                           
                        }
                      }
-                   
-                  
             }
             
             function cargarSelectEmpresa(respuesta){
@@ -121,7 +132,7 @@ function GuardarArtista() {
                var TEL_REPRESENTANTE = document.getElementById("TEL_REPRESENTANTE").value;
                var COR_REPRESENTANTE = document.getElementById("COR_REPRESENTANTE").value;
                
-                xMLHttpRequest.open("Post", "../../Registros?NOM_ARTISTA="+NOM_ARTISTA+"&NOM_REPRESENTANTE="+NOM_REPRESENTANTE+"&DOC_REPRESENTANTE="+DOC_REPRESENTANTE+"&TEL_REPRESENTANTE="+TEL_REPRESENTANTE+"&COR_REPRESENTANTE="+COR_REPRESENTANTE+"&RegistroArtista=true&ID_EMPRESA_D_ART="+selectedOption.value, true);
+                xMLHttpRequest.open("Post", "../../Registros?NOM_ARTISTA="+NOM_ARTISTA+"&NOM_REPRESENTANTE="+NOM_REPRESENTANTE+"&DOC_REPRESENTANTE="+DOC_REPRESENTANTE+"&TEL_REPRESENTANTE="+TEL_REPRESENTANTE+"&COR_REPRESENTANTE="+COR_REPRESENTANTE+"&ID_USUARIO_LOG="+id_user+"&RegistroArtista=true&ID_EMPRESA_D_ART="+selectedOption.value, true);
                 xMLHttpRequest.onreadystatechange = PostGuardarArtista;
                 xMLHttpRequest.send(null);
                 
@@ -132,14 +143,15 @@ function GuardarArtista() {
                        var resp = eval('(' + xMLHttpRequest.responseText + ')');
                        console.log(resp);
                        if(resp.result === true){
-                           document.getElementById("btn_art_close").click();
+                           document.getElementById("select_empresas").value="";
+                           document.getElementById("mensaje_Rart").innerHTML="Almacenado con Exito";
+                            document.getElementById("NOM_ARTISTA").value="";
+                            document.getElementById("NOM_REPRESENTANTE").value="";
+                            document.getElementById("DOC_REPRESENTANTE").value="";
+                            document.getElementById("TEL_REPRESENTANTE").value="";
+                            document.getElementById("COR_REPRESENTANTE").value="";
                        }
-                     
-                          
-                          
                       }
-                   
-                  
             }
             
             function ListarEmpresa() {

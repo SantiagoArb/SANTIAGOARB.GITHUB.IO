@@ -35,7 +35,7 @@
                     <div class="row">                    
                         <div class="col-lg-12">
                             <section class="panel">
-                                <form action="" method="post" id="data">
+                                <form action="" method="get" id="data">
                                     <header class="panel-heading">
                                         Tipo de Gestión: <select class="simple">
                                             <option>Operaciones</option>
@@ -45,7 +45,7 @@
                                         <button type="button" class="btn btn-xs btn-primary BTN_Accion" role="button" onclick="ListarEmpresa();" data-toggle="modal" data-target="#Modal_RegistrarArt" data-id="2" data-accion="Registrar Artista">Registrar Artista</button>
                                     </header>                      
                                     <div id="table-responsive">
-                                        <table id="Izi" class="table table-striped table-advance table-hover">
+                                        <table id="table_Empresas" class="table table-striped table-advance table-hover">
                                             <thead>
                                                 <tr>                                            
                                                     <th></th>

@@ -8,6 +8,7 @@ package Controladores;
 import DAO.DAO_Artista;
 import DAO.IArtista_DAO;
 import Modelo.Artista;
+import Modelo.Log;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,9 +21,9 @@ public class controller_art {
     public controller_art() {
     }
 
-    public boolean registerArt(Artista art) {
+    public boolean registerArt(Artista art, Log log) {
         IArtista_DAO adao = new DAO_Artista();
-        boolean result = adao.setArtista(art);
+        boolean result = adao.setArtista(art, log);
         return result;
     }
 

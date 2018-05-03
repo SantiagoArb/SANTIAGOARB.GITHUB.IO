@@ -8,6 +8,7 @@ package Controladores;
 import DAO.DAO_Empresa;
 import DAO.IEmpresa_DAO;
 import Modelo.Empresa;
+import Modelo.Log;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,9 +21,9 @@ public class controller_emp {
     public controller_emp() {
     }
 
-    public boolean registerEmpresa(Empresa emp) {
+    public boolean registerEmpresa(Empresa emp, Log log) {
         IEmpresa_DAO edao = new DAO_Empresa();
-        boolean result = edao.setEmpresa(emp);
+        boolean result = edao.setEmpresa(emp, log);
         return result;
     }
 
@@ -32,9 +33,9 @@ public class controller_emp {
         return result;
     }
 
-    public boolean deleteEmpresa(Empresa emp) {
+    public boolean deleteEmpresa(Empresa emp, Log log) {
         IEmpresa_DAO edao = new DAO_Empresa();
-        boolean result = edao.deleteEmpresa(emp);
+        boolean result = edao.deleteEmpresa(emp, log);
         return result;
     }
 

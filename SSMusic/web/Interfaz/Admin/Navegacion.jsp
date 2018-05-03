@@ -42,6 +42,8 @@
                 <a data-toggle="dropdown" class="dropdown-toggle" href="">
                     <span class="profile-ava">
                         <img alt="" src="../../img/avatar1_small.jpg">
+                        <p id="iduser">${sessionScope['ID_USUARIO']}</p>
+                        <script>document.getElementById("iduser").style="display:none";</script>
                     </span>
                     <span class="username">${sessionScope['sessionNombre']}</span>
                     <% String usuario = String.valueOf(request.getSession().getAttribute("sessionNombre"));%>
@@ -63,6 +65,7 @@
         </ul>
         <!-- notificatoin dropdown end-->
     </div>
+                   
 </header>      
 <!--sidebar start-->
 <aside>
@@ -102,7 +105,9 @@
         </ul>
         <!-- sidebar menu end-->
     </div>
+     
 </aside>
+
 <!--sidebar end-->
 <script src="https://code.jquery.com/jquery-3.3.1.js" type="text/javascript" ></script>
 <script src="../../js/jquery-1.8.3.min.js" type="text/javascript"></script>

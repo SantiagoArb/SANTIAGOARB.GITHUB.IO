@@ -6,6 +6,7 @@
 package DAO;
 
 import Modelo.Artista;
+import Modelo.Log;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,7 +15,7 @@ import java.util.List;
  * @author scardonas
  */
 public interface IArtista_DAO {
-    public boolean setArtista(Artista art);
+    public boolean setArtista(Artista art, Log log);
     public ArrayList<Artista> getArtistas();
     public boolean deleteArtista(Artista art);
     public boolean updateArtista(Artista art);

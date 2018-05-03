@@ -64,6 +64,7 @@ public class Datos extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("application/json;charset=UTF-8");
+        
         response.getWriter().write(jsonEmpresas());
     }
 
@@ -116,6 +117,7 @@ public class Datos extends HttpServlet {
             item.addProperty("COR_ENCARGADO_D", x.getCor_encargado());
             item.addProperty("FECHA_REGISTRO_D", x.getFecha_registro());
             array.add(item);
+            
         }
         json.add("Empresas", array);
         return json.toString();
@@ -144,7 +146,7 @@ public class Datos extends HttpServlet {
             item.addProperty("src", resultado.getSrc());
             array.add(item);
         }
-        System.out.println("Json artistas: " + array);
+        
         json.add("Artistas", array);
         return json.toString();
     }

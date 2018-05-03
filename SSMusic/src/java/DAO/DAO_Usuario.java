@@ -6,7 +6,9 @@
 package DAO;
 
 import Conexion.DBUtil;
+import Controladores.controller_log;
 import Metodos.Calendario;
+import Modelo.Log;
 import Modelo.Usuario;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -29,11 +31,11 @@ import java.util.logging.Logger;
 public class DAO_Usuario implements IUsuario_DAO {
 
     @Override
-    public Boolean setUser(Usuario user) {
+    public Boolean setUser(Usuario user, Log log) {
         boolean registrar = true;
         
         Connection con = null;
-        String sql = "INSERET INTO USUARIO"
+        String sql = "INSERT INTO USUARIO"
                 + "("
                 + "ID_USUARIO, "
                 + "ID_EMPRESA_U, "
@@ -54,7 +56,7 @@ public class DAO_Usuario implements IUsuario_DAO {
         try {
             con = DBUtil.getConexion();
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setNull(1, 0);
+            ps.setInt(1, 0);
             ps.setInt(2, user.getId_empresa());
             ps.setString(3, user.getTipo_perfil());
             ps.setString(4, user.getUsername());
@@ -67,10 +69,14 @@ public class DAO_Usuario implements IUsuario_DAO {
             ps.setString(11, user.getTelefono());
             ps.setString(12, user.getDireccion());
             ps.setString(13, user.getFecha_registro());
-            
+            System.out.println("Ps: "+ps);
+            System.out.println("sql: "+sql);
             ps.executeQuery();
             ps.close();
             con.close();
+            
+            controller_log ldao=new controller_log();
+            ldao.registerLog(log);
         } catch (SQLException e) {
             System.out.println("Error: Clase DAO_Usuario, método registrar");
             e.printStackTrace();

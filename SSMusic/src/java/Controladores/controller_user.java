@@ -7,6 +7,7 @@ package Controladores;
 
 import DAO.DAO_Usuario;
 import DAO.IUsuario_DAO;
+import Modelo.Log;
 import Modelo.Usuario;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,9 +21,9 @@ public class controller_user {
     public controller_user() {
     }
 
-    public Boolean registerUser(Usuario user) {
+    public Boolean registerUser(Usuario user, Log log) {
         IUsuario_DAO udao = new DAO_Usuario();
-       Boolean result = udao.setUser(user);
+       Boolean result = udao.setUser(user, log);
         return result;
     }
     

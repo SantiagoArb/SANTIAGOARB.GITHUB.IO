@@ -6,7 +6,9 @@
 package DAO;
 
 import Conexion.DBUtil;
+import Controladores.controller_log;
 import Modelo.Artista;
+import Modelo.Log;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -24,7 +26,7 @@ import java.util.logging.Logger;
 public class DAO_Artista implements IArtista_DAO {
 
     @Override
-    public boolean setArtista(Artista art) {
+    public boolean setArtista(Artista art, Log log) {
         boolean registrar = true;
 
         Connection con = null;
@@ -55,6 +57,8 @@ public class DAO_Artista implements IArtista_DAO {
             ps.executeQuery();
             ps.close();
             con.close();
+             controller_log ldao=new controller_log();
+            ldao.registerLog(log);
         } catch (SQLException ex) {
             System.out.println("Error: Clase DAO_Artista, método registrar");
             ex.printStackTrace();

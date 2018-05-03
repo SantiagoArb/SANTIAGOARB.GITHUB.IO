@@ -12,6 +12,7 @@ import DAO.IEmpresa_DAO;
 import Metodos.Calendario;
 import Modelo.Artista;
 import Modelo.Empresa;
+import Modelo.Log;
 import Modelo.Usuario;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
@@ -108,6 +109,7 @@ public class Registros extends HttpServlet {
         Calendario fechaR = new Calendario();
         String FECHA_REGISTRO = fechaR.Fecha_Registro();
         
+        Log log = new Log();
         Empresa emp = new Empresa();
         emp.setId_emp(1);
         emp.setId_emp_ma(1);
@@ -120,8 +122,16 @@ public class Registros extends HttpServlet {
         emp.setTipo_operacion(request.getParameter("TIPO_OPERACION_D"));
         emp.setValor_operacion(request.getParameter("VALOR_OPERACION_D"));
         emp.setFecha_registro(FECHA_REGISTRO);
+        
+        //Datos log
+        
+        log.setId_usuario_log(Integer.parseInt(request.getParameter("ID_USUARIO_LOG")));
+        log.setTipo_de_gestion("Registro Empresa");
+        
         controller_emp edao = new controller_emp();
-        boolean result = edao.registerEmpresa(emp);
+        boolean result = edao.registerEmpresa(emp, log);
+        
+        
         
         item.addProperty("result", result);
         
@@ -140,7 +150,7 @@ public class Registros extends HttpServlet {
         try{
         Calendario fechaR = new Calendario();
         String FECHA_REGISTRO = fechaR.Fecha_Registro();
-       
+        Log log = new Log();
         Artista art = new Artista();
         art.setId(1);
         art.setNombre_art(request.getParameter("NOM_ARTISTA"));
@@ -149,10 +159,13 @@ public class Registros extends HttpServlet {
         art.setTel_representante(request.getParameter("TEL_REPRESENTANTE"));
         art.setCor_representante(request.getParameter("COR_REPRESENTANTE"));
         art.setId_empresa_d_art(Integer.parseInt(request.getParameter("ID_EMPRESA_D_ART")));
-        art.setFecha_registro_art("01/04/2017");
+        art.setFecha_registro_art(FECHA_REGISTRO);
+        
+        log.setId_usuario_log(Integer.parseInt(request.getParameter("ID_USUARIO_LOG")));
+        log.setTipo_de_gestion("Registro Artista");
         
         controller_art adao = new controller_art();
-        boolean result = adao.registerArt(art);
+        boolean result = adao.registerArt(art,log);
         item.addProperty("result", result);
         
         }catch(Exception e){
@@ -204,10 +217,12 @@ public class Registros extends HttpServlet {
         Calendario fechaR = new Calendario();
         String FECHA_REGISTRO = fechaR.Fecha_Registro();
         System.out.println("fecha en servlet: "+FECHA_REGISTRO);
+        
+        Log log = new Log();
         Usuario user = new Usuario();
         user.setId(1);
-        user.setId_empresa(46);
-       user.setTipo_perfil("Operario");
+        user.setId_empresa(2);
+       user.setTipo_perfil("Oper");
        user.setUsername(request.getParameter("USERNAME"));
        user.setPass(request.getParameter("PASS"));
        user.setNombres(request.getParameter("NOMBRES"));
@@ -218,8 +233,12 @@ public class Registros extends HttpServlet {
        user.setTelefono(request.getParameter("TELEFONO"));
        user.setDireccion(request.getParameter("DIRECCION"));
        user.setFecha_registro(FECHA_REGISTRO);
+       
+       log.setId_usuario_log(Integer.parseInt(request.getParameter("ID_USUARIO_LOG")));
+        log.setTipo_de_gestion("Registro Operario");
+        
        controller_user edao = new controller_user();
-       boolean result = edao.registerUser(user);
+       boolean result = edao.registerUser(user, log);
         
         item.addProperty("result", result);
         
