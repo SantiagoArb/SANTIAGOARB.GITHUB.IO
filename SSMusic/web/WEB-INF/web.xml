@@ -5,6 +5,10 @@
         <servlet-class>Servlets.Otro</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>Datos</servlet-name>
+        <servlet-class>Servlets.Datos</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>Registros</servlet-name>
         <servlet-class>Servlets.Registros</servlet-class>
         <init-param>
@@ -27,6 +31,10 @@
     <servlet-mapping>
         <servlet-name>Otro</servlet-name>
         <url-pattern>/Otro</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Datos</servlet-name>
+        <url-pattern>/Datos</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Registros</servlet-name>
