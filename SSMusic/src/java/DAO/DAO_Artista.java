@@ -91,7 +91,6 @@ public class DAO_Artista implements IArtista_DAO {
                 art.setTel_representante(rs.getString("TEL_REPRESENTANTE"));
                 art.setCor_representante(rs.getString("COR_REPRESENTANTE"));
                 art.setId_empresa_d_art(rs.getInt("ID_EMPRESA_D_ART"));
-                art.setSrc(rs.getString("src"));
                 listaArtista.add(art);
             }
             stm.close();

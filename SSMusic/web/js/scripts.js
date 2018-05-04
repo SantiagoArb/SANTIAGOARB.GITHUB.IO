@@ -90,3 +90,23 @@ function initializeJS() {
 jQuery(document).ready(function(){
     initializeJS();
 });
+
+
+function Tablas() {
+//la funcion Tablas(), sirve para cambiar los datos almancenados en la misma al momento de dar click en el select #tipo_gestion
+    $.post("comboT.jsp", $("#data").serialize(), function (data) {
+        /* @param {tabla_grupos} Llama al table con id ='tabla_grupos', para que se muestre en la vista */
+        $("#tabla_grupos").html(data);
+    });
+}
+function mostrarTablas() {
+    var selectBox = document.getElementById('grupos');
+    var userInput = selectBox.options[selectBox.selectedIndex].value;
+    if (userInput !== '') {
+        document.getElementById('tablas').style.visibility = 'visible';
+        Tablas();
+    }
+    if (userInput === '') {
+        document.getElementById('tablas').style.visibility = 'hidden';
+    }
+}

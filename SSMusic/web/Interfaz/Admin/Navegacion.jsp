@@ -98,7 +98,7 @@
                 <ul class="sub">   
                     <li><a class="" href="Gestion.jsp">Gestión</a></li>
                     <li><a class="" href="Empresas.jsp">Información Empresas</a></li>
-                    <li><a onclick="ServletArtista();" class="" href="info_artistas.jsp">Información Artistas</a></li>
+                    <li><a onclick="" class="" href="Artistas.jsp">Información Artistas</a></li>
                     <li><a onclick="" class="" href="Operarios.jsp">Gestión Operarios</a></li>
                 </ul>
             </li>
@@ -118,7 +118,6 @@
 <script src="../../js/jquery.nicescroll.js" type="text/javascript"></script>
 <script src="../../js/jquery.customSelect.min.js" type="text/javascript" ></script>
 <script src="../../js/scripts.js" type="text/javascript" ></script>    
-<script src="../../js/DataTables.js" type="text/javascript"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/pdfmake.min.js" type="text/javascript"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js" type="text/javascript" ></script>
 <script src="https://cdn.datatables.net/v/bs4/jszip-2.5.0/dt-1.10.16/af-2.2.2/b-1.5.1/b-colvis-1.5.1/b-flash-1.5.1/b-html5-1.5.1/b-print-1.5.1/cr-1.4.1/fc-3.2.4/fh-3.1.3/kt-2.3.2/r-2.2.1/rg-1.0.2/sc-1.4.4/datatables.min.js" type="text/javascript"></script>

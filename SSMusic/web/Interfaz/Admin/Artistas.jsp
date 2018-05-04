@@ -25,10 +25,10 @@
                 <section class="wrapper">
                     <div class="row">
                         <div class="col-lg-12">
-                            <h3 class="page-header"><i class="fa fa-laptop"></i> Lista de Empresas</h3>
+                            <h3 class="page-header"><i class="fa fa-laptop"></i> Lista de Artistas</h3>
                             <ol class="breadcrumb">
                                 <li><i class="fa fa-home"></i><a href="Estudiante.jsp">Inicio</a></li>
-                                <li><i class="fa fa-laptop"></i>Empresas</li>  
+                                <li><i class="fa fa-laptop"></i>Artistas</li>  
                             </ol>             
                         </div>
                     </div> 
@@ -37,27 +37,25 @@
                             <section class="panel">
                                 <form action="" method="post" id="data">
                                     <header class="panel-heading">
-                                        <button type="button" class="btn btn-xs btn-success BTN_Accion" role="button" data-toggle="modal" data-target="#Modal_RegistrarEmp" data-id="1" data-accion="Registrar Empresa">Registrar Empresa</button>
+                                        <button type="button" class="btn btn-xs btn-primary BTN_Accion" role="button" onclick="ListarEmpresa();" data-toggle="modal" data-target="#Modal_RegistrarArt" data-id="2" data-accion="Registrar Artista">Registrar Artista</button>
                                     </header>                      
                                     <div id="table-responsive">
-                                        <table id="table_Empresas" class="table table-striped table-advance table-hover" >
+                                        <table id="table_Artistas" class="table table-striped table-advance table-hover" >
                                             <thead>
                                                 <tr>                                            
                                                     <th></th>
-                                                    <th>NIT Empresa</th>
-                                                    <th>Empresa</th>
-                                                    <th>Tipo de Operacion</th>
-                                                    <th>Valor de Operacion</th>
+                                                    <th>Poster</th>
+                                                    <th>Banda o Artista</th>
+                                                    <th>Fecha de Registro</th>
                                                     <th>Acciones</th>
                                                 </tr>
                                             </thead>
                                             <tfoot>
                                                 <tr>
                                                     <th></th>
-                                                    <th>NIT Empresa</th>
-                                                    <th>Empresa</th>
-                                                    <th>Tipo de Operacion</th>
-                                                    <th>Valor de Operacion</th>
+                                                    <th>Poster</th>
+                                                    <th>Banda o Artista</th>
+                                                    <th>Fecha de Registro</th>
                                                     <th>Acciones</th>
                                                 </tr>
                                             </tfoot>
@@ -78,6 +76,6 @@
                     <a href="http://www.politecnicojic.edu.co/">Politécnico Colombiano Jaime Isaza Cadavid</a> desarrollado por <a href="">Santiago Cardona & Santiago Arbelaez</a>
                 </div>
             </div>
-            <script src="../../js/DataTables/Empresas.js" type="text/javascript"></script>
+            <script src="../../js/DataTables/Artistas.js" type="text/javascript"></script>
     </body>
 </html>

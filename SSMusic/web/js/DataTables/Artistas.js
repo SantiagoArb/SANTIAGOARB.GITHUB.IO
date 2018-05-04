@@ -4,27 +4,8 @@
  * @version 28/03/2018
  * @see https://datatables.net/
  */
-function Tablas() {
-//la funcion Tablas(), sirve para cambiar los datos almancenados en la misma al momento de dar click en el select #tipo_gestion
-    $.post("comboT.jsp", $("#data").serialize(), function (data) {
-        /* @param {tabla_grupos} Llama al table con id ='tabla_grupos', para que se muestre en la vista */
-        $("#tabla_grupos").html(data);
-    });
-}
-function mostrarTablas() {
-    var selectBox = document.getElementById('grupos');
-    var userInput = selectBox.options[selectBox.selectedIndex].value;
-    if (userInput !== '') {
-        document.getElementById('tablas').style.visibility = 'visible';
-        Tablas();
-    }
-    if (userInput === '') {
-        document.getElementById('tablas').style.visibility = 'hidden';
-    }
-}
-
 $(document).ready(function () {
-    var table = $('#table_Empresas').DataTable({
+    var table = $('#table_Artistas').DataTable({
         language: {
             sProcessing: "Procesando...",
             sLengthMenu: "Mostrar _MENU_  Registros",
@@ -51,8 +32,8 @@ $(document).ready(function () {
         },
         ajax: {
             method: "GET",
-            url: "../../Datos",
-            dataSrc: "Empresas"
+            url: "../../Datos?peticion=data_art",
+            dataSrc: "Artistas"
         },
         select: "single",
         columns: [
@@ -66,13 +47,9 @@ $(document).ready(function () {
                 },
                 width: '15px'
             },
-            {data: "NIT_Empresa"},
-            {data: "Nom_Empresa"},
-            {data: "Tipo_operacion"},
-            {
-                data: "Valor_operacion",
-                render: $.fn.dataTable.render.number(',', '.', 0, '$')
-            },
+            {data: "img_artista"},
+            {data: "NOM_ARTISTA"},
+            {data: "FECHA_REGISTRO_ART"},
             {data: "acciones"}
         ],
         order: [[1, 'asc']],
@@ -99,7 +76,7 @@ $(document).ready(function () {
         ]
 
     });
-    $('#table_Empresas tbody').on('click', 'td.details-control', function () {
+    $('#table_Artistas tbody').on('click', 'td.details-control', function () {
         var tr = $(this).closest('tr');
         var tdi = tr.find('i.fa');
         var row = table.row(tr);
@@ -111,7 +88,7 @@ $(document).ready(function () {
             tdi.first().addClass('fa-plus-square');
         } else {
 // Open this row
-            row.child(Empresasformat(row.data())).show();
+            row.child(Artistasformat(row.data())).show();
             tr.addClass('shown');
             tdi.first().removeClass('fa-plus-square');
             tdi.first().addClass('fa-minus-square');
@@ -129,33 +106,34 @@ $(document).ready(function () {
         $('#Estudiante').html(nombre);
     });
 });
-function Empresasformat(d) {
+function Artistasformat(d) {
     // `d` is the original data object for the row
     return '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">' +
             '<tr>' +
-            '<td>Fecha de Registro:</td>' +
-            '<td>' + d.FECHA_REGISTRO_D + '</td>' +
+            '<td><b>Nombre del Representante:</b></td>' +
+            '<td>' + d.NOM_REPRESENTANTE + '</td>' +
             '</tr>' +
             '<tr>' +
-            '<td>Nombre del Encargado:</td>' +
-            '<td>' + d.NOM_ENCARGADO_D + '</td>' +
+            '<td><b>Documento del Representante:</b></td>' +
+            '<td>' + d.DOC_REPRESENTANTE + '</td>' +
             '</tr>' +
             '<tr>' +
-            '<td>Documento del Encargo:</td>' +
-            '<td>' + d.DOC_ENCARGADO_D + '</td>' +
+            '<td><b>Telefono del Representante:</b></td>' +
+            '<td>' + d.TEL_REPRESENTANTE + '</td>' +
             '</tr>' +
             '<tr>' +
-            '<td>Telefono del Encargado:</td>' +
-            '<td>' + d.TEL_ENCARGADO_D + '</td>' +
+            '<td><b>Correo del Representante:</b></td>' +
+            '<td>' + d.COR_REPRESENTANTE + '</td>' +
             '</tr>' +
             '<tr>' +
-            '<td>Correo del Encargado:</td>' +
-            '<td>' + d.COR_ENCARGADO_D + '</td>' +
+            '<td><b>Empresa:</b></td>' +
+            '<td>' + d.ID_EMPRESA_D_ART + '</td>' +
             '</tr>' +
             '<tr>' +
-            '<td>Informacion Adicional:</td>' +
+            '<td><b>Informacion Adicional:</b></td>' +
             '<td>Descripcion de la empresa...</td>' +
             '</tr>' +
             '</table>';
 }
+
 
