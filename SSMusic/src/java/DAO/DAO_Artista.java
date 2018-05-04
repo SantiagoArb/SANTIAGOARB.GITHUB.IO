@@ -39,9 +39,10 @@ public class DAO_Artista implements IArtista_DAO {
                 + "TEL_REPRESENTANTE, "
                 + "COR_REPRESENTANTE, "
                 + "ID_EMPRESA_D_ART, "
-                + "FECHA_REGISTRO_ART"
+                + "FECHA_REGISTRO_ART, "
+                + "SRC"
                 + ") "
-                + "VALUES(?,?,?,?,?,?,?,?)";
+                + "VALUES(?,?,?,?,?,?,?,?,?)";
 
         try {
             con = DBUtil.getConexion();
@@ -54,6 +55,7 @@ public class DAO_Artista implements IArtista_DAO {
             ps.setString(6, art.getCor_representante());
             ps.setInt(7,art.getId_empresa_d_art());
             ps.setString(8,art.getFecha_registro_art());
+            ps.setString(9, art.getSrc());
             ps.executeQuery();
             ps.close();
             con.close();
@@ -91,6 +93,8 @@ public class DAO_Artista implements IArtista_DAO {
                 art.setTel_representante(rs.getString("TEL_REPRESENTANTE"));
                 art.setCor_representante(rs.getString("COR_REPRESENTANTE"));
                 art.setId_empresa_d_art(rs.getInt("ID_EMPRESA_D_ART"));
+                art.setSrc(rs.getString("SRC"));
+                
                 listaArtista.add(art);
             }
             stm.close();

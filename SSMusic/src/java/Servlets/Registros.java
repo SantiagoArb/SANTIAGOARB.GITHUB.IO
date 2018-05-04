@@ -159,6 +159,8 @@ public class Registros extends HttpServlet {
         art.setTel_representante(request.getParameter("TEL_REPRESENTANTE"));
         art.setCor_representante(request.getParameter("COR_REPRESENTANTE"));
         art.setId_empresa_d_art(Integer.parseInt(request.getParameter("ID_EMPRESA_D_ART")));
+        art.setSrc(request.getParameter("SRC"));
+        System.out.println("SRC en servlet: "+request.getParameter("SRC"));
         art.setFecha_registro_art(FECHA_REGISTRO);
         
         log.setId_usuario_log(Integer.parseInt(request.getParameter("ID_USUARIO_LOG")));

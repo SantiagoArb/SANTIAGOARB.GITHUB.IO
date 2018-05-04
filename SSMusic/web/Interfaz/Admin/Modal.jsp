@@ -25,48 +25,48 @@
                              <div class="col-sm-6">
                                  <br/>
                                  <label for="NIT_EMPRESA_D">Nit: </label>
-                                 <input name="NIT_EMPRESA_D" id='NIT_EMPRESA_D' required autofocus type='text' placeholder="Nit" class="form-control"/>
+                                 <input name="Nit" id='NIT_EMPRESA_D' required autofocus type='text' placeholder="Nit" class="form-control"/>
                              </div>
                              <div class="col-sm-6">
                                  <br/>
                                  <label for="NOM_EMPRESA_D">Nombre: </label>
-                                 <input name="NOM_EMPRESA_D" id='NOM_EMPRESA_D' required autofocus type='text'placeholder="Nombre Empresa" class="form-control"/>
+                                 <input name="Nombre Empresa" id='NOM_EMPRESA_D' required autofocus type='text'placeholder="Nombre Empresa" class="form-control"/>
                              </div>
                              <div class="col-sm-6">
                                  <br/>
                                  <label for="NOM_ENCARGADO_D">Nombre Encargado: </label>
-                                 <input name="NOM_ENCARGADO_D" id='NOM_ENCARGADO_D' required autofocus type='text' placeholder="Nombre Encargado" class="form-control"/>
+                                 <input name="Nombre Encargado" id='NOM_ENCARGADO_D' required autofocus type='text' placeholder="Nombre Encargado" class="form-control"/>
                              </div>
                              <div class="col-sm-6">
                                  <br/>
                                  <label for="DOC_ENCARGADO_D">Documento Encargado: </label>
-                                 <input name="DOC_ENCARGADO_D" id='DOC_ENCARGADO_D' required autofocus type='text' placeholder="Documento Encargado" class="form-control"/>
+                                 <input name="Documento Encargado" id='DOC_ENCARGADO_D' required autofocus type='text' placeholder="Documento Encargado" class="form-control"/>
                              </div>
                              <div class="col-sm-6">
                                  <br/>
                                  <label for="TEL_ENCARGADO_D">Telefono: </label>
-                                 <input name="TEL_ENCARGADO_D" id='TEL_ENCARGADO_D' required autofocus type='text' placeholder="Telefono Encargado" class="form-control"/>
+                                 <input name="Telefono Encargado" id='TEL_ENCARGADO_D' required autofocus type='text' placeholder="Telefono Encargado" class="form-control"/>
                              </div>
                              <div class="col-sm-6">
                                  <br/>
                                  <label for="COR_ENCARGADO_D">Correo: </label>
-                                 <input name="COR_ENCARGADO_D" id='COR_ENCARGADO_D' required autofocus type='text' placeholder="Correo Encargado" class="form-control"/>
+                                 <input name="Correo Encargado" id='COR_ENCARGADO_D' pattern="email" required autofocus type='text' placeholder="Correo Encargado" class="form-control"/>
                              </div>
                              <div class="col-sm-6">
                                  <br/>
                                  <label for="TIPO_OPERACION_D">Tipo Operacion </label>
-                                 <input name="TIPO_OPERACION_D" id='TIPO_OPERACION_D' required autofocus type='text' placeholder="Tipo de Operacion" class="form-control"/>
+                                 <input name="Tipo de Operacion" id='TIPO_OPERACION_D' required autofocus type='text' placeholder="Tipo de Operacion" class="form-control"/>
                              </div>
                              <div class="col-sm-6">
                                  <br/>
                                  <label for="VALOR_OPERACION_D">Valor Operacion </label>
-                                 <input name="VALOR_OPERACION_D" id='VALOR_OPERACION_D' required autofocus type='text' placeholder="Valor Operacion" class="form-control"/>
+                                 <input name="Valor Operacion" id='VALOR_OPERACION_D' required autofocus type='text' placeholder="Valor Operacion" class="form-control"/>
                              </div>
                     </div>
                          </div>
                 </div>
                 <div class="modal-footer">
-                    <button id="RegistroEmpresa" onclick="GuardarEmpresa();" class="btn btn-default" name="RegistroEmpresa">Registrar</button>
+                    <button id="RegistroEmpresa" onclick="validarEmpresa();" class="btn btn-default" name="RegistroEmpresa">Registrar</button>
                     <button id="btn_emp_close" type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
                 </div>
             </div>
@@ -125,6 +125,11 @@
                                  <br/>
                                  <label for="COR_REPRESENTANTE">Correo Representante: </label>
                                  <input name="COR_REPRESENTANTE" id='COR_REPRESENTANTE' required autofocus type='text' placeholder="Correo Representante" class="form-control"/>
+                             </div>
+                             <div class="col-sm-9">
+                                 <br/>
+                                 <label for="Img_art">Imagen Artista: </label>
+                                 <input id="Img_art" type="file">
                              </div>
                              </div>
                          </div>

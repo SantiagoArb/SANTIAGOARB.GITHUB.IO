@@ -142,12 +142,14 @@ public class Datos extends HttpServlet {
             JsonObject item = new JsonObject();
             
             item.addProperty("ID_ARTISTA", resultado.getId());
-            item.addProperty("img_artista", "<img src='../../img/male.png' class='img-responsive img-circle' style='height:30px; width:30px'>");
+            item.addProperty("img_artista", "<img src='"+resultado.getSrc()+"' class='img-responsive img-circle' style='height:30px; width:30px'>");
                         item.addProperty("acciones", ""
                     + "<div class='btn-group'>"
                     + "<button type='button' id='" + resultado.getId() + "' style='width:40px; height:34px' title='Modificar Registro' class='btn btn-xs btn-primary' data-toggle='modal' data-target='#Modal_RegistrarEmp' data-id='1' data-accion='Observacion'> <i class='icon_pencil-edit'></i></button> "
                     + "<button type='button' id='" + resultado.getId() + "' style='width:40px; height:34px' title='Eliminar Registro' class='btn btn-xs btn-danger btn_delete' data-toggle='modal' data-target='#ModalEliminar' data-id='1' data-accion='Eliminar'><i class='icon_trash'></i></button>"
                     + "</div>");
+                        resultado.getSrc();
+                                
             item.addProperty("NOM_ARTISTA", resultado.getNombre_art());
             item.addProperty("NOM_REPRESENTANTE", resultado.getNom_representante());
             item.addProperty("DOC_REPRESENTANTE", resultado.getDoc_representante());

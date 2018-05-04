@@ -23,7 +23,6 @@ function PostGuardarEmpresa() {
         var resp = eval('(' + xMLHttpRequest.responseText + ')');
         console.log(resp);
         if (resp.result === true) {
-            document.getElementById("mensaje_Remp").innerHTML = "";
             document.getElementById("mensaje_Remp").innerHTML = "Almacenado con Exito";
             document.getElementById("NIT_EMPRESA_D").value = "";
             document.getElementById("NOM_EMPRESA_D").value = "";
@@ -52,24 +51,14 @@ function cargarSelectEmpresa(respuesta) {
 
 }
 
-function validarEmpresa(){
-   var error = document.getElementById("mensaje_Remp");
-   var resultado = validarInput("Modal_RegistrarEmp",error);
-   if(!resultado){
-       GuardarEmpresa();
-   }
-};
-
-function validarInput(pad, lbl_error) {
-    document.getElementById("mensaje_Remp").innerHTML = "";
-    console.log(pad);
+function validarInput() {
+    var padreId = document.getElementById("div_registro_empresa");
     var valido = false;
     var mensaje = "";
     try {
         expr_email = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
 
-        var padre = document.getElementById(pad);
-        console.log(padre);
+        var padre = document.getElementById(padreId);
         var inputs = padre.getElementsByTagName("input");
         var selects = padre.getElementsByTagName("select");
         if (inputs != undefined && inputs.length > 0) {
@@ -124,7 +113,6 @@ function validarInput(pad, lbl_error) {
             }
         }
         if (valido) {
-             document.getElementById("mensaje_Remp").innerHTML = mensaje;
             console.log(mensaje);
         }
         return valido;
