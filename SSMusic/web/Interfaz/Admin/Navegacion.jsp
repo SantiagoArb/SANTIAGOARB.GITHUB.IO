@@ -97,7 +97,7 @@
                 </a>
                 <ul class="sub">   
                     <li><a class="" href="Gestion.jsp">Gestión</a></li>
-                    <li><a class="" href="">Información Empresas</a></li>
+                    <li><a class="" href="Empresas.jsp">Información Empresas</a></li>
                     <li><a onclick="ServletArtista();" class="" href="info_artistas.jsp">Información Artistas</a></li>
                     <li><a onclick="" class="" href="Operarios.jsp">Gestión Operarios</a></li>
                 </ul>

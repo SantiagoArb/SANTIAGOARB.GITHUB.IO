@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <servlet>
-        <servlet-name>Otro</servlet-name>
-        <servlet-class>Servlets.Otro</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>Datos</servlet-name>
         <servlet-class>Servlets.Datos</servlet-class>
     </servlet>
@@ -20,17 +16,9 @@
         <servlet-name>Ingreso</servlet-name>
         <servlet-class>Servlets.Ingreso</servlet-class>
     </servlet>
-    <servlet>
-        <servlet-name>Artista</servlet-name>
-        <servlet-class>Servlets.Artista</servlet-class>
-    </servlet>
     <servlet-mapping>
         <servlet-name>Ingreso</servlet-name>
         <url-pattern>/Ingreso</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>Otro</servlet-name>
-        <url-pattern>/Otro</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Datos</servlet-name>
@@ -39,10 +27,6 @@
     <servlet-mapping>
         <servlet-name>Registros</servlet-name>
         <url-pattern>/Registros</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>Artista</servlet-name>
-        <url-pattern>/Artista</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
