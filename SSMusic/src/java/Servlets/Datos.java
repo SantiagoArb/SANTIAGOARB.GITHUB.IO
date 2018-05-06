@@ -160,7 +160,6 @@ public class Datos extends HttpServlet {
             item.addProperty("src", resultado.getSrc());
             array.add(item);
         }
-        
         json.add("Artistas", array);
         return json.toString();
     }
