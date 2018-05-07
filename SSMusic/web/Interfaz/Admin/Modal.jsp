@@ -14,7 +14,7 @@
 <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="Modal_RegistrarEmp" >
     <div class="modal-dialog modal-lg" role="document">
 
-        <form id="Reg_Empresa" class="" >
+        <form id="Reg_Empresa" class="" action="../../Registros?peticion=Reg_Empresa" >
             <div class="modal-content">
 
                 <div class="modal-header">
@@ -26,7 +26,7 @@
 
                 <div class="modal-body" >
                     <div class="container-fluid">
-                        <p id="mensaje_Remp" style="color: #ff0000">${sessionScope['ErrorRegistroEmp']}</p>
+                        <span id="Error_ReEmp" name="Error_ReEmp" style="color: #ff0000"></span>
                  
                             <div class="form-group">
                                 <div class="col-md-6 col-md-offset-3">
@@ -45,21 +45,21 @@
                             <div class="form-group">
                                 <div class="col-sm-6">
                                     <label for="NOM_ENCARGADO_D" class="control-label">Nombre Encargado: </label>
-                                    <input name="NOM_ENCARGADO_D" id='NOM_ENCARGADO_D' required autofocus type='text' placeholder="Nombre Encargado" class="form-control input"/>
+                                    <input name="NOM_ENCARGADO_D" id='NOM_ENCARGADO_D'  type='text' placeholder="Nombre Encargado" class="form-control input"/>
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <div class="col-sm-6">
                                     <label for="DOC_ENCARGADO_D" class="control-label">Documento Encargado: </label>
-                                    <input name="DOC_ENCARGADO_D" id='DOC_ENCARGADO_D' required autofocus type='text' placeholder="Documento Encargado" class="form-control input"/>
+                                    <input name="DOC_ENCARGADO_D" id='DOC_ENCARGADO_D'  type='text' placeholder="Documento Encargado" class="form-control input"/>
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <div class="col-sm-6">
                                     <label for="TEL_ENCARGADO_D" class="control-label">Telefono: </label>
-                                    <input name="TEL_ENCARGADO_D" id='TEL_ENCARGADO_D' required autofocus type='text' placeholder="Telefono Encargado" class="form-control input"/>
+                                    <input name="TEL_ENCARGADO_D" id='TEL_ENCARGADO_D' type='text' placeholder="Telefono Encargado" class="form-control input"/>
                                 </div>
                             </div>
 
@@ -67,21 +67,21 @@
                             <div class="form-group">
                                 <div class="col-sm-6">
                                     <label for="COR_ENCARGADO_D" class="control-label">Correo: </label>
-                                    <input name="COR_ENCARGADO_D" id='COR_ENCARGADO_D' pattern="email" required autofocus type='text' placeholder="Correo Encargado" class="form-control input"/>
+                                    <input name="COR_ENCARGADO_D" id='COR_ENCARGADO_D' type='text' placeholder="Correo Encargado" class="form-control input"/>
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <div class="col-sm-6">
                                     <label for="TIPO_OPERACION_D" class="control-label">Tipo Operacion </label>
-                                    <input name="TIPO_OPERACION_D" id='TIPO_OPERACION_D' required autofocus type='text' placeholder="Tipo de Operacion" class="form-control input"/>
+                                    <input name="TIPO_OPERACION_D" id='TIPO_OPERACION_D' type='text' placeholder="Tipo de Operacion" class="form-control input"/>
                                 </div>
                             </div>
 
                             <div class="form-group">
                             <div class="col-sm-6">
                                 <label for="VALOR_OPERACION_D" class="control-label">Valor Operacion </label>
-                                <input name="VALOR_OPERACION_D" id='VALOR_OPERACION_D' required autofocus type='text' placeholder="Valor Operacion" class="form-control input"/>
+                                <input name="VALOR_OPERACION_D" id='VALOR_OPERACION_D' type='text' placeholder="Valor Operacion" class="form-control input"/>
                             </div>
                             </div>
                     </div>

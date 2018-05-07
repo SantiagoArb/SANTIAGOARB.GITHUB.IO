@@ -104,9 +104,32 @@ $(document).ready(function () {
                 }
             }
         }
+    })
+
+    .on('success.form.bv', function (e) {
+        $('#success_message').slideDown({opacity: "show"}, "slow"); // Do something ...
+        $('#Reg_Empresa').data('bootstrapValidator').resetForm();
+
+        // Prevent form submission
+        e.preventDefault();
+
+        // Get the form instance
+        var $form = $(e.target);
+
+        // Get the BootstrapValidator instance
+        var bv = $form.data('bootstrapValidator');
+
+        // Use Ajax to submit form data
+        $.post($form.attr('action'), $form.serialize(), function (result) {
+           $('#Error_ReEmp').text(result);
+                    /*if (result) {
+                        $('#Error_ReEmp').text('Empresa Registrada con exito');
+                    } else {
+                        $('#Error_ReEmp').text('Hubo un problema');  
+                    }*/
+            
+        }, 'json');
     });
-
-
 
 });
 
