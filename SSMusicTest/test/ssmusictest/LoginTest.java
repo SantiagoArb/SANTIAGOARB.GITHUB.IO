@@ -31,6 +31,16 @@ public class LoginTest {
     String loginCorrecto = "Usuario correcto";
     String loginIncorrecto = "Usuario y/o contraseña Incorrecto";
     
+    //Parametros Empresa
+    String nit = "1232323";
+   String nombre_emp  = "Youtube";
+  String nombre_enc  = "Ramiro";
+   String telefono_enc  = "34353333";
+   String correo = "ramiro22@gmail.com";
+   String tipo_operacion  = "Reproduccion";
+   String valor_operacion  = "22";
+   String documento_enc = "1029939994";
+    
     public LoginTest() {
     }
     
@@ -63,6 +73,20 @@ public class LoginTest {
         TimeUnit.SECONDS.sleep(2);
         String sesion_actual = instanceLogin.validarUsuario();
         assertEquals(sesion_actual,usuario);
+    }
+    
+    @Test
+    public void RegistrarEmpresa(){
+        Login instanceLogin = new Login(driver);
+        RegistroEmpresa instanceEmpresa = new RegistroEmpresa(driver);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        instanceLogin.Logear(usuario, contraseña);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        instanceEmpresa.Registrar_Empresa( nit,  nombre_emp,  nombre_enc,  telefono_enc,  correo,  tipo_operacion,  valor_operacion,  documento_enc);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+       String empresa = instanceEmpresa.ValidarRegistro();
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        assertEquals(empresa,nombre_emp);
     }
     
 }

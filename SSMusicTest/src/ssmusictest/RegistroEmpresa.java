@@ -97,4 +97,8 @@ public class RegistroEmpresa {
         this.setTxt_documento_enc(documento);
         this.click_submit_registro();
     }
+    public String ValidarRegistro(){
+        String result="";
+        return result;
+    }
 }
