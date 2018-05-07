@@ -5,82 +5,102 @@
 --%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<!--Modal para el Registro de Materias-->                        
+
 <script src="js/gestion.js" type="text/javascript"></script>
 <script src="js/gestion_operarios.js" type="text/javascript"></script>
 <link href="../../css/interfaz.css" rel="stylesheet" type="text/css"/>
 
+
 <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="Modal_RegistrarEmp" >
     <div class="modal-dialog modal-lg" role="document">
 
-        <div class="modal-content">
-            <div class="modal-header">
-                <div class="form_top">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h2>Registro de <span>Empresa</span></h2>
-                </div> 
-            </div>
-            <div class="modal-body" >
-                <div class="container-fluid" >
-                    <p id="mensaje_Remp" style="color: #ff0000">${sessionScope['ErrorRegistroEmp']}</p>
-                    <div class="col-sm-12">
-                        <div class="col-sm-6">
-                            <br/>
-                            <label for="NIT_EMPRESA_D">Nit: </label>
-                            <input name="Nit" id='NIT_EMPRESA_D' required autofocus type='text' placeholder="Nit" class="form-control input"/>
-                        </div>
-                        <div class="col-sm-6">
-                            <br/>
-                            <label for="NOM_EMPRESA_D">Nombre: </label>
-                            <input name="Nombre Empresa" id='NOM_EMPRESA_D' required autofocus type='text'placeholder="Nombre Empresa" class="form-control"/>
-                        </div>
-                        <div class="col-sm-6">
-                            <br/>
-                            <label for="NOM_ENCARGADO_D">Nombre Encargado: </label>
-                            <input name="Nombre Encargado" id='NOM_ENCARGADO_D' required autofocus type='text' placeholder="Nombre Encargado" class="form-control"/>
-                        </div>
-                        <div class="col-sm-6">
-                            <br/>
-                            <label for="DOC_ENCARGADO_D">Documento Encargado: </label>
-                            <input name="Documento Encargado" id='DOC_ENCARGADO_D' required autofocus type='text' placeholder="Documento Encargado" class="form-control"/>
-                        </div>
-                        <div class="col-sm-6">
-                            <br/>
-                            <label for="TEL_ENCARGADO_D">Telefono: </label>
-                            <input name="Telefono Encargado" id='TEL_ENCARGADO_D' required autofocus type='text' placeholder="Telefono Encargado" class="form-control"/>
-                        </div>
-                        <div class="col-sm-6">
-                            <br/>
-                            <label for="COR_ENCARGADO_D">Correo: </label>
-                            <input name="Correo Encargado" id='COR_ENCARGADO_D' pattern="email" required autofocus type='text' placeholder="Correo Encargado" class="form-control"/>
-                        </div>
-                        <div class="col-sm-6">
-                            <br/>
-                            <label for="TIPO_OPERACION_D">Tipo Operacion </label>
-                            <input name="Tipo de Operacion" id='TIPO_OPERACION_D' required autofocus type='text' placeholder="Tipo de Operacion" class="form-control"/>
-                        </div>
-                        <div class="col-sm-6">
-                            <br/>
-                            <label for="VALOR_OPERACION_D">Valor Operacion </label>
-                            <input name="Valor Operacion" id='VALOR_OPERACION_D' required autofocus type='text' placeholder="Valor Operacion" class="form-control"/>
-                        </div>
+        <form id="Reg_Empresa" class="" >
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <div class="form_top">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h2>Registro de <span>Empresa</span></h2>
+                    </div> 
+                </div>
+
+                <div class="modal-body" >
+                    <div class="container-fluid">
+                        <p id="mensaje_Remp" style="color: #ff0000">${sessionScope['ErrorRegistroEmp']}</p>
+                 
+                            <div class="form-group">
+                                <div class="col-md-6 col-md-offset-3">
+                                    <label for="NIT_EMPRESA_D" class="control-label">Nit: </label>
+                                    <input name="NIT_EMPRESA_D" id='NIT_EMPRESA_D' type='text' placeholder="Nit" class="form-control input"/>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-sm-6">
+                                    <label for="NOM_EMPRESA_D" class="control-label">Nombre: </label>
+                                    <input name="NOM_EMPRESA_D" id='NOM_EMPRESA_D' type='text' placeholder="Nombre Empresa" class="form-control input"/>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-sm-6">
+                                    <label for="NOM_ENCARGADO_D" class="control-label">Nombre Encargado: </label>
+                                    <input name="NOM_ENCARGADO_D" id='NOM_ENCARGADO_D' required autofocus type='text' placeholder="Nombre Encargado" class="form-control input"/>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-sm-6">
+                                    <label for="DOC_ENCARGADO_D" class="control-label">Documento Encargado: </label>
+                                    <input name="DOC_ENCARGADO_D" id='DOC_ENCARGADO_D' required autofocus type='text' placeholder="Documento Encargado" class="form-control input"/>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-sm-6">
+                                    <label for="TEL_ENCARGADO_D" class="control-label">Telefono: </label>
+                                    <input name="TEL_ENCARGADO_D" id='TEL_ENCARGADO_D' required autofocus type='text' placeholder="Telefono Encargado" class="form-control input"/>
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <div class="col-sm-6">
+                                    <label for="COR_ENCARGADO_D" class="control-label">Correo: </label>
+                                    <input name="COR_ENCARGADO_D" id='COR_ENCARGADO_D' pattern="email" required autofocus type='text' placeholder="Correo Encargado" class="form-control input"/>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-sm-6">
+                                    <label for="TIPO_OPERACION_D" class="control-label">Tipo Operacion </label>
+                                    <input name="TIPO_OPERACION_D" id='TIPO_OPERACION_D' required autofocus type='text' placeholder="Tipo de Operacion" class="form-control input"/>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                            <div class="col-sm-6">
+                                <label for="VALOR_OPERACION_D" class="control-label">Valor Operacion </label>
+                                <input name="VALOR_OPERACION_D" id='VALOR_OPERACION_D' required autofocus type='text' placeholder="Valor Operacion" class="form-control input"/>
+                            </div>
+                            </div>
                     </div>
                 </div>
-            </div>
-            <div class="modal-footer">
-                <button id="RegistroEmpresa" onclick="validarEmpresa();" class="btn btn-default" name="RegistroEmpresa">Registrar</button>
-                <button id="btn_emp_close" type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-            </div>
-        </div>
 
+                <div class="modal-footer">
+                    <button id="RegistroEmpresa" type="submit" class="btn btn-default" name="RegistroEmpresa">Registrar</button>
+                    <button id="btn_emp_close" type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                </div>
+            </div>
+        </form>
     </div>
 </div>
 <!--Modal Registro Artista -->                     
 <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="Modal_RegistrarArt" >
     <div class="modal-dialog modal-lg" role="document">
-        <form class="" action="" id="Reg_Artistas">
-            <div class="modal-content">
+        <form class="form" action="" id="Reg_Artistas">
 
+            <div class="modal-content">
                 <div class="modal-header">
                     <div class="form_top">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -95,50 +115,52 @@
                         <div class="col-sm-12">
                             <div class="form-group">
                                 <div class="col-sm-12">
-                                    <label for="ID_ARTISTA">Empresa: </label>
-                                    <select id="select_empresas" class="form-control input" >
-                                        <option value="">Seleccione</option>
+                                    <label for="ID_ARTISTA" class='control-label'>Empresa: </label>
+                                    <select id="select_empresas" name="select_empresas" class="form-control input select" >
+                                        <option value=" ">Seleccione una empresa</option>
                                     </select>
                                 </div>
                             </div>
 
-                            <div class="form-group">
-                                <div class="col-sm-6 ">
-                                    <label for="NOM_ARTISTA">Nombre Artista: </label>
-                                    <input name="NOM_ARTISTA" id='NOM_ARTISTA' type='text' placeholder="Nombre Artista" class="form-control input"/>
-                                </div>
-                            </div>
 
                             <div class="form-group">
-                                <div class="col-sm-6 ">
-                                    <label for="NOM_REPRESENTANTE">Nombre Representante: </label>
+                                <div class="col-sm-6">  
+                                    <label for="NOM_ARTISTA" class="control-label">Nombre Artista: </label>
+                                    <input name="NOM_ARTISTA" id='NOM_ARTISTA' type='text' placeholder="Nombre Artista" class="form-control input"/>      
+                                </div>
+                            </div>
+                            <br>
+
+                            <div class="form-group">
+                                <div class="col-sm-6">       
+                                    <label for="NOM_REPRESENTANTE" class="control-label">Nombre Representante: </label>
                                     <input name="NOM_REPRESENTANTE" id='NOM_REPRESENTANTE' required autofocus type='text' placeholder="Nombre Representante" class="form-control input"/>
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <div class="col-sm-6">
-                                    <label for="DOC_REPRESENTANTE">Documento Representante: </label>
+                                    <label for="DOC_REPRESENTANTE" class="control-label">Documento Representante: </label>
                                     <input name="DOC_REPRESENTANTE" id='DOC_REPRESENTANTE' required autofocus type='text' placeholder="Documento Representante" class="form-control input"/>
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <div class="col-sm-6">
-                                    <label for="TEL_REPRESENTANTE">Telefono Representante: </label>
+                                    <label for="TEL_REPRESENTANTE" class="control-label">Telefono Representante: </label>
                                     <input name="TEL_REPRESENTANTE" id='TEL_REPRESENTANTE' required autofocus type='text' placeholder="Telefono Representante" class="form-control input"/>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="col-sm-6">
-                                    <label for="COR_REPRESENTANTE">Correo Representante: </label>
+                                    <label for="COR_REPRESENTANTE" class="control-label">Correo Representante: </label>
                                     <input name="COR_REPRESENTANTE" id='COR_REPRESENTANTE' required autofocus type='text' placeholder="Correo Representante" class="form-control input"/>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="col-sm-9">
                                     <label for="Img_art">Imagen Artista: </label>
-                                    <input id="Img_art" type="file">
+                                    <input id="Img_art" type="file" class="fileinput-button">
                                 </div>
                             </div>
                         </div>
@@ -151,8 +173,9 @@
             </div> 
         </form>  
     </div>
-
 </div>
+
+
 <div class="modal fade" id="ModalEliminar" role="dialog">
     <div class="modal-dialog"> 
         <!-- Modal content-->

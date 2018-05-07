@@ -77,6 +77,6 @@
                 </div>
             </div>
             <script src="../../js/DataTables/Artistas.js" type="text/javascript"></script>
-            <script src="../../js/Validator/Registros.js" type="text/javascript"></script>
+            <script src="../../js/Validator/Artista.js" type="text/javascript"></script>
     </body>
 </html>

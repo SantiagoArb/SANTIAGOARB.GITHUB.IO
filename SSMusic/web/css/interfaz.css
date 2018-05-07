@@ -5,6 +5,14 @@
     Author URL: https://bootstrapmade.com
 */
 /* Import fonts */
+
+.form-control-feedback{
+  position:relative !important;
+  float: left;
+  left:5px;
+  top:-1px !important;
+}
+
 .editar {color: blue; cursor:pointer;}
 
 #contenedorForm {margin-left: 45px; font-size:12px;}
@@ -9866,4 +9874,15 @@ span.customSelect.changed {
     background:url(../img/customSelect-arrow.gif) no-repeat center right;
 
 }
+
+
+
+
+
+
+
+
+
+
+
 

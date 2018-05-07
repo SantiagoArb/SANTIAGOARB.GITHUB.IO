@@ -79,5 +79,6 @@
                 </div>
             </div>
             <script src="../../js/DataTables/Empresas.js" type="text/javascript"></script>
+            <script src="../../js/Validator/Empresa.js" type="text/javascript"></script>
     </body>
 </html>
