@@ -21,12 +21,12 @@ import org.openqa.selenium.chrome.ChromeDriver;
  */
 public class LoginTest {
     private WebDriver driver;
-    private final String baseUrl = "http://localhost:47497/SSMusic/Ingreso_Registro/Acceso.jsp";
+    private final String baseUrl = "http://localhost:17155/SSMusic/Ingreso_Registro/Acceso.jsp";
     private final StringBuffer verificationErrors = new StringBuffer();
     
     
     //Parametros Login
-     String usuario = "santiagoa";
+     String usuario = "santiago";
     String contraseña = "1234";
     String loginCorrecto = "Usuario correcto";
     String loginIncorrecto = "Usuario y/o contraseña Incorrecto";
@@ -61,8 +61,8 @@ public class LoginTest {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         instanceLogin.Logear(usuario, contraseña);
         TimeUnit.SECONDS.sleep(2);
-        
-        assertEquals(instanceLogin.getP_confirmacion(),loginIncorrecto);
+        String sesion_actual = instanceLogin.validarUsuario();
+        assertEquals(sesion_actual,usuario);
     }
     
 }
