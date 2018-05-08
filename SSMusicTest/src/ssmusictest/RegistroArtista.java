@@ -71,7 +71,7 @@ public class RegistroArtista {
 
     
 
-    public void Registrar_Empresa(String nombre_art, String nombre_rep,String documento, String telefono, String correo){
+    public void Registrar_Artista(String nombre_art, String nombre_rep,String documento, String telefono, String correo){
        this.click_btn_infoArtistas();
        this.clickbtn_registrar_art();
        this.setTxt_nombre_art(nombre_art);
@@ -81,5 +81,10 @@ public class RegistroArtista {
        this.setTxt_correo(correo);
        this.click_submit_registro();
        
+    }
+    
+    public String validarArtista(){
+        String text = "";
+        return text;
     }
 }

@@ -40,6 +40,13 @@ public class LoginTest {
    String tipo_operacion  = "Reproduccion";
    String valor_operacion  = "22";
    String documento_enc = "1029939994";
+   
+   //ParametrosArtista
+   String nombre_art = "Rammstein";
+   String nombre_rep  = "Santiago";
+   String documento_rep  = "1020475843";
+   String telefono_rep = "3245522";
+   String correo_rep  = "rmst@gmail.com";
     
     public LoginTest() {
     }
@@ -88,5 +95,23 @@ public class LoginTest {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         assertEquals(empresa,nombre_emp);
     }
+    
+    @Test
+    public void RegistrarArtista(){
+        Login instanceLogin = new Login(driver);
+        RegistroEmpresa instanceEmpresa = new RegistroEmpresa(driver);
+        RegistroArtista instanceArtista = new RegistroArtista(driver);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        instanceLogin.Logear(usuario, contraseña);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        instanceEmpresa.Registrar_Empresa( nit,  nombre_emp,  nombre_enc,  telefono_enc,  correo,  tipo_operacion,  valor_operacion,  documento_enc);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        instanceArtista.Registrar_Artista(nombre_art, nombre_rep, documento_rep, telefono_rep, correo_rep);
+        
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        String artista = instanceArtista.validarArtista();
+        assertEquals(artista,nombre_art);
+    }
+    
     
 }

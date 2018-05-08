@@ -99,6 +99,7 @@ public class RegistroEmpresa {
     }
     public String ValidarRegistro(){
         String result="";
+        this.click_Btn_infoEmpresas();
         return result;
     }
 }
