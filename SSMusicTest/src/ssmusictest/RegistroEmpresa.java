@@ -26,12 +26,27 @@ public class RegistroEmpresa {
    By txt_valor_operacion  = By.id("VALOR_OPERACION_D");
    By txt_documento_enc = By.id("DOC_ENCARGADO_D");
    By submit_registro = By.id("RegistroEmpresa");
+   By txt_buscar = By.id("buscar_art");
+   By result_buscar = By.id("row_busqueda");
+   By btn_delete = By.id("eliminar_emp");
+   By txt_eliminar = By.id("name_eliminar_emp");
+   By btn_submit_delete = By.id("submit_delete");
     
     
     public RegistroEmpresa(WebDriver driver) {
         this.driver = driver;
     }
 
+    public void click_Btn_delete() {
+        driver.findElement(btn_delete).click();
+    }
+
+    public void click_Btn_submit_delete() {
+       driver.findElement(btn_submit_delete).click();
+    }
+
+    
+    
      public void click_submit_registro() {
         driver.findElement(submit_registro).click();
     }
@@ -42,6 +57,22 @@ public class RegistroEmpresa {
 
     public void click_Btn_registrar_emp() {
         driver.findElement(btn_registrar_emp).click();
+    }
+
+    public String getResult_buscar() {
+        
+        String result = driver.findElement(result_buscar).getText();
+        return result;
+    }
+    
+     public void settxt_eliminar(String eliminar) {
+         driver.findElement(txt_eliminar).clear();
+        driver.findElement(txt_eliminar).sendKeys(eliminar);
+    }
+    
+     public void settxt_buscar(String buscar) {
+         driver.findElement(txt_buscar).clear();
+        driver.findElement(txt_buscar).sendKeys(buscar);
     }
 
     public void setTxt_nit(String nit) {
@@ -97,9 +128,31 @@ public class RegistroEmpresa {
         this.setTxt_documento_enc(documento);
         this.click_submit_registro();
     }
-    public String ValidarRegistro(){
-        String result="";
+    
+    public void update_Empresa(String nit, String nombre_emp, String nombre_enc, String telefono, String correo, String tipo_op, String valor_op, String documento){
         this.click_Btn_infoEmpresas();
+        this.click_Btn_registrar_emp();
+        this.setTxt_nit(nit);
+        this.setTxt_nombre_emp(nombre_emp);
+        this.setTxt_nombre_enc(nombre_enc);
+        this.setTxt_telefono_enc(telefono);
+        this.setTxt_correo(correo);
+        this.setTxt_tipo_operacion(tipo_op);
+        this.setTxt_valor_operacion(valor_op);
+        this.setTxt_documento_enc(documento);
+        this.click_submit_registro();
+    }
+    public String ValidarRegistro(String nombre_emp){
+        
+        this.settxt_buscar(nombre_emp);
+        String result=this.getResult_buscar();
+        
         return result;
+    }
+    public void eliminar_Empresa(String nombre_emp){
+        this.click_Btn_delete();
+        this.settxt_eliminar(nombre_emp);
+        this.click_Btn_submit_delete();
+        
     }
 }

@@ -26,6 +26,11 @@ public class RegistroArtista {
    By txt_correo  = By.id("COR_REPRESENTANTE");
   
    By submit_registro = By.id("RegistroArtista");
+   By txt_buscar = By.id("buscar_art");
+   By result_buscar = By.id("row_busqueda");
+   By btn_delete = By.id("eliminar_emp");
+   By txt_eliminar = By.id("name_eliminar_emp");
+   By btn_submit_delete = By.id("submit_delete");
     
     
     public RegistroArtista(WebDriver driver) {
@@ -68,8 +73,30 @@ public class RegistroArtista {
         driver.findElement(txt_correo).clear();
         driver.findElement(txt_correo).sendKeys(correo);
     }
+public void click_Btn_delete() {
+        driver.findElement(btn_delete).click();
+    }
 
+    public void click_Btn_submit_delete() {
+       driver.findElement(btn_submit_delete).click();
+    }
     
+    public String getResult_buscar() {
+        
+        String result = driver.findElement(result_buscar).getText();
+        return result;
+    }
+    
+     public void settxt_eliminar(String eliminar) {
+         driver.findElement(txt_eliminar).clear();
+        driver.findElement(txt_eliminar).sendKeys(eliminar);
+    }
+    
+     public void settxt_buscar(String buscar) {
+         driver.findElement(txt_buscar).clear();
+        driver.findElement(txt_buscar).sendKeys(buscar);
+    }
+
 
     public void Registrar_Artista(String nombre_art, String nombre_rep,String documento, String telefono, String correo){
        this.click_btn_infoArtistas();
@@ -83,8 +110,29 @@ public class RegistroArtista {
        
     }
     
-    public String validarArtista(){
-        String text = "";
-        return text;
+    public void update_Artista(String nombre_art, String nombre_rep,String documento, String telefono, String correo){
+       this.click_btn_infoArtistas();
+       this.clickbtn_registrar_art();
+       this.setTxt_nombre_art(nombre_art);
+       this.setTxt_nombre_rep(nombre_rep);
+       this.setTxt_documento_rep(documento);
+       this.setTxt_telefono_rep(telefono);
+       this.setTxt_correo(correo);
+       this.click_submit_registro();
+       
+    }
+    
+   public String ValidarArtista(String nombre_art){
+        
+        this.settxt_buscar(nombre_art);
+        String result=this.getResult_buscar();
+        
+        return result;
+    }
+    public void eliminar_artista(String nombre_artista){
+        this.click_Btn_delete();
+        this.settxt_eliminar(nombre_artista);
+        this.click_Btn_submit_delete();
+        
     }
 }

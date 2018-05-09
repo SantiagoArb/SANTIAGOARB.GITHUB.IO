@@ -91,9 +91,39 @@ public class LoginTest {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         instanceEmpresa.Registrar_Empresa( nit,  nombre_emp,  nombre_enc,  telefono_enc,  correo,  tipo_operacion,  valor_operacion,  documento_enc);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-       String empresa = instanceEmpresa.ValidarRegistro();
+       String empresa = instanceEmpresa.ValidarRegistro(nombre_emp);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         assertEquals(empresa,nombre_emp);
+    }
+    
+    @Test
+    public void actualizarEmpresa(){
+        Login instanceLogin = new Login(driver);
+        RegistroEmpresa instanceEmpresa = new RegistroEmpresa(driver);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        instanceLogin.Logear(usuario, contraseña);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        instanceEmpresa.update_Empresa( nit,  nombre_emp,  nombre_enc,  telefono_enc,  correo,  tipo_operacion,  valor_operacion,  documento_enc);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+       String empresa = instanceEmpresa.ValidarRegistro(nombre_emp);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        assertEquals(empresa,nombre_emp);
+    }
+    
+    @Test
+    public void EliminarEmpresa(){
+        Login instanceLogin = new Login(driver);
+        RegistroEmpresa instanceEmpresa = new RegistroEmpresa(driver);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        instanceLogin.Logear(usuario, contraseña);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        instanceEmpresa.Registrar_Empresa( nit,  nombre_emp,  nombre_enc,  telefono_enc,  correo,  tipo_operacion,  valor_operacion,  documento_enc);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        instanceEmpresa.eliminar_Empresa(nombre_emp);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+       String empresa = instanceEmpresa.ValidarRegistro(nombre_emp);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        assertNotEquals(empresa,nombre_emp);
     }
     
     @Test
@@ -109,8 +139,44 @@ public class LoginTest {
         instanceArtista.Registrar_Artista(nombre_art, nombre_rep, documento_rep, telefono_rep, correo_rep);
         
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        String artista = instanceArtista.validarArtista();
+        String artista = instanceArtista.ValidarArtista(nombre_art);
         assertEquals(artista,nombre_art);
+    }
+    
+    @Test
+    public void ActualizarArtista(){
+        Login instanceLogin = new Login(driver);
+        RegistroEmpresa instanceEmpresa = new RegistroEmpresa(driver);
+        RegistroArtista instanceArtista = new RegistroArtista(driver);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        instanceLogin.Logear(usuario, contraseña);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        instanceEmpresa.Registrar_Empresa( nit,  nombre_emp,  nombre_enc,  telefono_enc,  correo,  tipo_operacion,  valor_operacion,  documento_enc);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        instanceArtista.update_Artista(nombre_art, nombre_rep, documento_rep, telefono_rep, correo_rep);
+        
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        String artista = instanceArtista.ValidarArtista(nombre_art);
+        assertEquals(artista,nombre_art);
+    }
+    
+    @Test
+    public void eliminarArtista(){
+        Login instanceLogin = new Login(driver);
+        RegistroEmpresa instanceEmpresa = new RegistroEmpresa(driver);
+        RegistroArtista instanceArtista = new RegistroArtista(driver);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        instanceLogin.Logear(usuario, contraseña);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        instanceEmpresa.Registrar_Empresa( nit,  nombre_emp,  nombre_enc,  telefono_enc,  correo,  tipo_operacion,  valor_operacion,  documento_enc);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        instanceArtista.Registrar_Artista(nombre_art, nombre_rep, documento_rep, telefono_rep, correo_rep);
+        
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        instanceArtista.eliminar_artista(nombre_art);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        String artista = instanceArtista.ValidarArtista(nombre_art);
+        assertNotEquals(artista,nombre_art);
     }
     
     

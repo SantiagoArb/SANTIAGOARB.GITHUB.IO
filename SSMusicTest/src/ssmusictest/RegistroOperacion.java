@@ -51,7 +51,7 @@ public class RegistroOperacion {
         this.driver = driver;
 }
     
-    public void RegistrarArtista(String artista, String cantidad, String venta){
+    public void RegistrarOperacion(String artista, String cantidad, String venta){
         this.clickReg_operacion();
         this.setSelect_id_artista(artista);
         this.setTxt_cantidad(cantidad);
