@@ -42,7 +42,7 @@ public class Ingreso extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Ingreso</title>");            
+            out.println("<title>Servlet Ingreso</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet Ingreso at " + request.getContextPath() + "</h1>");
@@ -63,19 +63,18 @@ public class Ingreso extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession session=request.getSession();  
-        
+        HttpSession session = request.getSession(true);
         String nick = request.getParameter("nick");
         String pass = request.getParameter("password");
-        System.out.println("Nick: "+nick);
-        System.out.println("pass: "+pass);
-       response.setContentType("text/html");
-       String user_logged = processLogin(nick,pass, session);
-       
+        System.out.println("Nick: " + nick);
+        System.out.println("pass: " + pass);
+        response.setContentType("text/html");
+        String user_logged = processLogin(nick, pass, session);
+        
         response.getWriter().write(user_logged);
     }
-    
-    public String processLogin(String nick, String pass, HttpSession session){
+
+    public String processLogin(String nick, String pass, HttpSession session) {
         com.google.gson.JsonObject json = new JsonObject();
         Usuario user = new Usuario();
         Usuario resultado;
@@ -86,6 +85,7 @@ public class Ingreso extends HttpServlet {
         resultado = udao.getOneUser(user);
         JsonObject item = new JsonObject();
         item.addProperty("ID_USUARIO", resultado.getId());
+        session.setAttribute("ID_USUARIO", resultado.getId());
         item.addProperty("TIPO_PERFIL", resultado.getTipo_perfil());
         item.addProperty("USERNAME", resultado.getUsername());
         item.addProperty("PASS", resultado.getPass());
@@ -98,7 +98,7 @@ public class Ingreso extends HttpServlet {
         item.addProperty("DIRECCION", resultado.getDireccion());
         item.addProperty("ID_EMPRESA_U", resultado.getFecha_registro());
         array.add(item);
-        
+
         session.setAttribute("ID_USUARIO", resultado.getId());
         session.setAttribute("TIPO_PERFIL", resultado.getTipo_perfil());
         session.setAttribute("USERNAME", resultado.getUsername());

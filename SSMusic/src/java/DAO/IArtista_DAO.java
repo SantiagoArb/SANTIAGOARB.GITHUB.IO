@@ -15,7 +15,7 @@ import java.util.List;
  * @author scardonas
  */
 public interface IArtista_DAO {
-    public boolean setArtista(Artista art, Log log);
+    public boolean setArtista(Artista art);
     public ArrayList<Artista> getArtistas();
     public boolean deleteArtista(Artista art);
     public boolean updateArtista(Artista art);

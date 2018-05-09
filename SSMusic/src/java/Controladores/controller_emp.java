@@ -21,9 +21,9 @@ public class controller_emp {
     public controller_emp() {
     }
 
-    public boolean registerEmpresa(Empresa emp, Log log) {
+    public boolean registerEmpresa(Empresa emp) {
         IEmpresa_DAO edao = new DAO_Empresa();
-        boolean result = edao.setEmpresa(emp, log);
+        boolean result = edao.setEmpresa(emp);
         return result;
     }
 
@@ -33,9 +33,9 @@ public class controller_emp {
         return result;
     }
 
-    public boolean deleteEmpresa(Empresa emp, Log log) {
+    public boolean deleteEmpresa(Empresa emp) {
         IEmpresa_DAO edao = new DAO_Empresa();
-        boolean result = edao.deleteEmpresa(emp, log);
+        boolean result = edao.deleteEmpresa(emp);
         return result;
     }
 

@@ -105,6 +105,7 @@ public class Datos extends HttpServlet {
         JsonArray array = new JsonArray();
         for (Empresa x : listEmp) {
             JsonObject item = new JsonObject();
+            //Datos de la Tabla
             item.addProperty("id", x.getId_emp());
             item.addProperty("NIT_Empresa", x.getNIT_emp());
             item.addProperty("Nom_Empresa", x.getNom_emp());
@@ -115,7 +116,7 @@ public class Datos extends HttpServlet {
                     + "<button type='button' id='" + x.getId_emp() + "' style='width:40px; height:34px' title='Modificar Registro' class='btn btn-xs btn-primary' data-toggle='modal' data-target='#Modal_RegistrarEmp' data-id='1' data-accion='Observacion'> <i class='icon_pencil-edit'></i></button> "
                     + "<button type='button' id='" + x.getId_emp() + "' style='width:40px; height:34px' title='Eliminar Registro' class='btn btn-xs btn-danger btn_delete' data-toggle='modal' data-target='#ModalEliminar' data-id='1' data-accion='Eliminar'><i class='icon_trash'></i></button>"
                     + "</div>");
-            
+            //Datos adicionales
             item.addProperty("DOC_ENCARGADO_D", x.getDoc_encargado());
             item.addProperty("NOM_ENCARGADO_D", x.getNom_encargado());
             item.addProperty("TEL_ENCARGADO_D", x.getTel_encargado());

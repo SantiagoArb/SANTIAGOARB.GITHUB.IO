@@ -24,7 +24,7 @@ import java.util.ArrayList;
 public class DAO_Empresa implements IEmpresa_DAO {
 
     @Override
-    public boolean setEmpresa(Empresa emp, Log log) {
+    public boolean setEmpresa(Empresa emp) {
         boolean registrar = true;
 
         Connection con = null;
@@ -47,7 +47,7 @@ public class DAO_Empresa implements IEmpresa_DAO {
             con = DBUtil.getConexion();
             try (PreparedStatement ps = con.prepareStatement(sql)) {
                 ps.setInt(1, 1);
-                ps.setInt(2, 2);
+                ps.setInt(2, emp.getId_emp_ma());
                 ps.setString(3, emp.getNIT_emp());
                 ps.setString(4, emp.getNom_emp());
                 ps.setString(5, emp.getNom_encargado());
@@ -60,12 +60,11 @@ public class DAO_Empresa implements IEmpresa_DAO {
                 ps.executeQuery();
             }
             con.close();
-            controller_log ldao=new controller_log();
-            ldao.registerLog(log);
+
         } catch (SQLException ex) {
             System.out.println("Error: Clase DAO_Empresa, método registrar");
             ex.printStackTrace();
-            registrar = false;
+            return registrar = false;
         } 
         
         return registrar;
@@ -111,7 +110,7 @@ public class DAO_Empresa implements IEmpresa_DAO {
     }
 
    @Override
-    public boolean deleteEmpresa(Empresa emp, Log log) {
+    public boolean deleteEmpresa(Empresa emp) {
         boolean eliminar = true;
         Connection con = null;
 
@@ -123,8 +122,6 @@ public class DAO_Empresa implements IEmpresa_DAO {
             ps.setString(1, emp.getNom_emp());
             ps.executeQuery();
             ps.close();
-            controller_log ldao=new controller_log();
-            ldao.registerLog(log);
             
         } catch (SQLException e) {
             System.out.println("Error: Clase DAO_Artista, método eliminar");
@@ -139,5 +136,4 @@ public class DAO_Empresa implements IEmpresa_DAO {
     public boolean updateEmpresa(Empresa emp) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
 }

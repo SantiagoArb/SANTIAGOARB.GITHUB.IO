@@ -31,7 +31,7 @@ import java.util.logging.Logger;
 public class DAO_Usuario implements IUsuario_DAO {
 
     @Override
-    public Boolean setUser(Usuario user, Log log) {
+    public Boolean setUser(Usuario user) {
         boolean registrar = true;
         
         Connection con = null;
@@ -76,11 +76,10 @@ public class DAO_Usuario implements IUsuario_DAO {
             con.close();
             
             controller_log ldao=new controller_log();
-            ldao.registerLog(log);
         } catch (SQLException e) {
             System.out.println("Error: Clase DAO_Usuario, método registrar");
             e.printStackTrace();
-            registrar = false;
+            return registrar = false;
         } 
         
         return registrar;

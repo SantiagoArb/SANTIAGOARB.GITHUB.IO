@@ -99,9 +99,9 @@
                        console.log(resp);
                       if(resp.respuesta[0].ID_USUARIO !== 0 || resp.respuesta[0].TIPO_PERFIL !== null){
                           if(resp.respuesta[0].TIPO_PERFIL === "admin"){
-                          window.location.replace("http://localhost:17155/SSMusic/Interfaz/Admin/Inicio.jsp");    
+                          window.location.replace("http://localhost:7001/SSMusic/Interfaz/Admin/Inicio.jsp");    
                       }else if(resp.respuesta[0].TIPO_PERFIL === "Oper"){
-                          window.location.replace("http://localhost:17155/SSMusic/Interfaz/Operario/Inicio_op.jsp");
+                          window.location.replace("http://localhost:7001/SSMusic/Interfaz/Operario/Inicio_op.jsp");
                       }
                       }else{
                           document.getElementById("P_confirmacion").style="display:inline;";
