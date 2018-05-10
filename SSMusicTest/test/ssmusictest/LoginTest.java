@@ -47,6 +47,11 @@ public class LoginTest {
    String documento_rep  = "1020475843";
    String telefono_rep = "3245522";
    String correo_rep  = "rmst@gmail.com";
+   
+   //Parametros operacion
+   String artista = "Rammstein";
+   String cantidad = "4";
+   
     
     public LoginTest() {
     }
@@ -178,6 +183,25 @@ public class LoginTest {
         String artista = instanceArtista.ValidarArtista(nombre_art);
         assertNotEquals(artista,nombre_art);
     }
+    
+    public void IngresarOperacion(){
+        Login instanceLogin = new Login(driver);
+        RegistroEmpresa instanceEmpresa = new RegistroEmpresa(driver);
+        RegistroArtista instanceArtista = new RegistroArtista(driver);
+        RegistroOperacion instanceOperacion = new RegistroOperacion(driver);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        instanceLogin.Logear(usuario, contraseña);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        instanceEmpresa.Registrar_Empresa( nit,  nombre_emp,  nombre_enc,  telefono_enc,  correo,  tipo_operacion,  valor_operacion,  documento_enc);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        instanceArtista.Registrar_Artista(nombre_art, nombre_rep, documento_rep, telefono_rep, correo_rep);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        instanceOperacion.RegistrarOperacion(artista, cantidad);
+        assertTrue(instanceOperacion.getValidacion_operacion());
+        
+    }
+    
+    
     
     
 }

@@ -22,9 +22,20 @@ public class RegistroOperacion {
    By txt_cantidad = By.id("CANTIDAD_OPERACIONES");
    By txt_venta = By.id("VALOR_VENTA");
    By btn_submit = By.id("btn_submit_op");
+   By result_ingreso = By.id("result_operacion");
 
     public void clickReg_operacion() {
         driver.findElement(reg_operacion).click();
+    }
+
+    public boolean getValidacion_operacion() {
+        boolean result = false;
+        if(driver.findElement(result_ingreso).getText() == "Operacion Exitosa"){
+            result = true;
+        } 
+        
+        
+        return result;
     }
     
     public void setSelect_id_artista(String artista) {
@@ -51,11 +62,12 @@ public class RegistroOperacion {
         this.driver = driver;
 }
     
-    public void RegistrarOperacion(String artista, String cantidad, String venta){
+    public void RegistrarOperacion(String artista, String cantidad){
         this.clickReg_operacion();
         this.setSelect_id_artista(artista);
         this.setTxt_cantidad(cantidad);
-        this.setTxt_venta(venta);
         this.clickBtn_submit();
     }
+    
+    
 }
