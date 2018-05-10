@@ -46,7 +46,6 @@
                         <script>document.getElementById("iduser").style="display:none";</script>
                     </span>
                     <span class="username">${sessionScope['sessionNombre']}</span>
-                    <% String usuario = String.valueOf(request.getSession().getAttribute("sessionNombre"));%>
                     <b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu extended logout">

@@ -7,6 +7,7 @@ package Servlets;
 
 import Controladores.controller_art;
 import Controladores.controller_emp;
+import Controladores.controller_log;
 import Controladores.controller_user;
 import DAO.IEmpresa_DAO;
 import Metodos.Calendario;
@@ -81,10 +82,9 @@ public class Registros extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+        response.setContentType("application/json;charset=UTF-8");
         String peticion = request.getParameter("peticion");
         if (peticion.equals("Reg_Empresa")) {
-            response.setContentType("application/json;charset=UTF-8");
             response.getWriter().write(RegistroEmpresa(request, response));
         }
         if (request.getParameter("RegistroEmpresa") != null) {
@@ -108,6 +108,8 @@ public class Registros extends HttpServlet {
 
     public String RegistroEmpresa(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
+        HttpSession session = request.getSession(true);
         com.google.gson.JsonObject json = new JsonObject();
         JsonObject item = new JsonObject();
         try {
@@ -130,11 +132,16 @@ public class Registros extends HttpServlet {
             emp.setFecha_registro(FECHA_REGISTRO);
 
             //Datos log
-            log.setId_usuario_log(Integer.parseInt(request.getParameter("ID_USUARIO_LOG")));
+            log.setId_usuario_log(Integer.parseInt((String) session.getAttribute("ID_USUARIO")));
             log.setTipo_de_gestion("Registro Empresa");
 
             controller_emp edao = new controller_emp();
-            boolean result = edao.registerEmpresa(emp, log);
+            controller_log logdao = new controller_log();
+            boolean result = edao.registerEmpresa(emp);
+
+            if (result) {
+                logdao.registerLog(log);
+            }
 
             item.addProperty("result", result);
 
@@ -143,7 +150,7 @@ public class Registros extends HttpServlet {
         }
         return item.toString();
     }
-    
+
     public String RegistroArtista(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
@@ -168,7 +175,12 @@ public class Registros extends HttpServlet {
             log.setTipo_de_gestion("Registro Artista");
 
             controller_art adao = new controller_art();
-            boolean result = adao.registerArt(art, log);
+            boolean result = adao.registerArt(art);
+
+            controller_log logdao = new controller_log();
+            if (result) {
+                logdao.registerLog(log);
+            }
             item.addProperty("result", result);
 
         } catch (Exception e) {
@@ -242,7 +254,11 @@ public class Registros extends HttpServlet {
             log.setTipo_de_gestion("Registro Operario");
 
             controller_user edao = new controller_user();
-            boolean result = edao.registerUser(user, log);
+            boolean result = edao.registerUser(user);
+            controller_log logdao = new controller_log();
+            if (result) {
+                logdao.registerLog(log);
+            }
 
             item.addProperty("result", result);
 

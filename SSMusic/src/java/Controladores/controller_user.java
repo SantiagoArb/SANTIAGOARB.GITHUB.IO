@@ -21,28 +21,29 @@ public class controller_user {
     public controller_user() {
     }
 
-    public Boolean registerUser(Usuario user, Log log) {
+    public Boolean registerUser(Usuario user) {
         IUsuario_DAO udao = new DAO_Usuario();
-       Boolean result = udao.setUser(user, log);
+        boolean result = udao.setUser(user);
         return result;
     }
-    
+
     public void updateUser(Usuario user) {
         IUsuario_DAO udao = new DAO_Usuario();
         udao.updateUser(user);
     }
-    
+
     public void deleteUser(Usuario user) {
         IUsuario_DAO udao = new DAO_Usuario();
         udao.deleteUser(user);
     }
+
     public Usuario getOneUser(Usuario user) {
         Usuario users;
         IUsuario_DAO udao = new DAO_Usuario();
         users = udao.getOneUser(user);
         return users;
     }
-    
+
     public List<Usuario> getUsers() {
         List<Usuario> users = new ArrayList<Usuario>();
         IUsuario_DAO udao = new DAO_Usuario();

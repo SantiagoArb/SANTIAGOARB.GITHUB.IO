@@ -16,11 +16,11 @@ import java.util.List;
  */
 public interface IEmpresa_DAO {
 
-    public boolean setEmpresa(Empresa emp, Log log);
+    public boolean setEmpresa(Empresa emp);
 
     public ArrayList<Empresa> getEmpresa();
 
     public boolean updateEmpresa(Empresa emp);
 
-    public boolean deleteEmpresa(Empresa emp, Log log);
+    public boolean deleteEmpresa(Empresa emp);
 }

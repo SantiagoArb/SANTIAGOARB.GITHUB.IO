@@ -21,9 +21,9 @@ public class controller_art {
     public controller_art() {
     }
 
-    public boolean registerArt(Artista art, Log log) {
+    public boolean registerArt(Artista art) {
         IArtista_DAO adao = new DAO_Artista();
-        boolean result = adao.setArtista(art, log);
+        boolean result = adao.setArtista(art);
         return result;
     }
 

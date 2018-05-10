@@ -15,7 +15,7 @@ import java.util.List;
  */
 public interface IUsuario_DAO {
     
-    public Boolean setUser(Usuario user, Log log);
+    public Boolean setUser(Usuario user);
 
     public List<Usuario> getUser();
 

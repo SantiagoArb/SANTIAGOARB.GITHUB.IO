@@ -26,7 +26,7 @@ import java.util.logging.Logger;
 public class DAO_Artista implements IArtista_DAO {
 
     @Override
-    public boolean setArtista(Artista art, Log log) {
+    public boolean setArtista(Artista art) {
         boolean registrar = true;
 
         Connection con = null;
@@ -47,29 +47,28 @@ public class DAO_Artista implements IArtista_DAO {
         try {
             con = DBUtil.getConexion();
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1,art.getId());
+            ps.setInt(1, art.getId());
             ps.setString(2, art.getNombre_art());
             ps.setString(3, art.getNom_representante());
             ps.setString(4, art.getDoc_representante());
             ps.setString(5, art.getTel_representante());
             ps.setString(6, art.getCor_representante());
-            ps.setInt(7,art.getId_empresa_d_art());
-            ps.setString(8,art.getFecha_registro_art());
+            ps.setInt(7, art.getId_empresa_d_art());
+            ps.setString(8, art.getFecha_registro_art());
             ps.setString(9, art.getSrc());
             ps.executeQuery();
             ps.close();
             con.close();
-             controller_log ldao=new controller_log();
-            ldao.registerLog(log);
+
+
         } catch (SQLException ex) {
             System.out.println("Error: Clase DAO_Artista, método registrar");
             ex.printStackTrace();
-            registrar = false;
+            return registrar = false;
         }
-        
+
         return registrar;
     }
-    
 
     @Override
     public ArrayList<Artista> getArtistas() {
@@ -94,7 +93,7 @@ public class DAO_Artista implements IArtista_DAO {
                 art.setCor_representante(rs.getString("COR_REPRESENTANTE"));
                 art.setId_empresa_d_art(rs.getInt("ID_EMPRESA_D_ART"));
                 art.setSrc(rs.getString("SRC"));
-                
+
                 listaArtista.add(art);
             }
             stm.close();
@@ -142,7 +141,7 @@ public class DAO_Artista implements IArtista_DAO {
                 + "TEL_REPRESENTANTE = ?, "
                 + "COR_REPRESENTANTE = ?, "
                 + "WHERE NOM_ARTISTA = ?";
-          try {
+        try {
             con = DBUtil.getConexion();
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, art.getNombre_art());
