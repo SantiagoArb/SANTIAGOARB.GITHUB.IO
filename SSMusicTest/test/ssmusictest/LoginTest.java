@@ -56,7 +56,17 @@ public class LoginTest {
    String artista = "Rammstein";
    String cantidad = "4";
    
-    
+     //Parametros Operario
+   String usuario_op="Lau123"+randomchar;
+   String contraseña_op ="1234"; 
+   String nombre_op="Laura";
+   String apellido1_op="gonzales";
+   String apellido2_op = "Restrepo";
+   String documento_op = "123323211";
+   String correo_op = "lausss@gmail.com";
+   String telefono_op= "32323222";
+   String direccion_op ="cra 33_222";
+   
     public LoginTest() {
     }
    
@@ -209,7 +219,17 @@ public class LoginTest {
         
     }
     
-    
+    @Test
+    public void RegistroOperario() throws InterruptedException{
+        System.out.println("Inicia Test registro operario...");
+        Login instanceLogin = new Login(driver);
+        RegistroOperario instanceOperario = new RegistroOperario(driver);
+        instanceLogin.Logear(usuario, contraseña);
+       driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+       String result = instanceOperario.registrarOperario(usuario_op, contraseña_op, nombre_op, apellido1_op, apellido2_op, documento_op, correo_op, telefono_op, direccion_op );
+       driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+       assertEquals(result,"Almacenado con Exito");
+    }
     
     
 }

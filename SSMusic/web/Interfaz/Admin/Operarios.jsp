@@ -34,7 +34,7 @@
                                 <form action="" method="post" id="data">
                                     <header class="panel-heading">
                                         Tipo de Gestión: 
-                                        <button type="button" class="btn btn-xs btn-success BTN_Accion" role="button" data-toggle="modal" data-target="#Modal_RegistrarOp" data-id="1" data-accion="Registrar Empresa">Registrar Operario</button>
+                                        <button id="reg_operario" type="button" class="btn btn-xs btn-success BTN_Accion" role="button" data-toggle="modal" data-target="#Modal_RegistrarOp" data-id="1" data-accion="Registrar Empresa">Registrar Operario</button>
                                        
                                     </header>                      
                                     
