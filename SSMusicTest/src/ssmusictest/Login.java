@@ -25,13 +25,19 @@ public class Login {
    By password = By.id("password");
    By btn_ingreso = By.id("btn_ingreso");
    By p_confirmacion = By.id("P_confirmacion");
+   
    By info_perfil = By.xpath("/html/body/header/div[2]/ul/li/ul/li[1]/a");
-   By username_perfil = By.xpath("//*[@id=\"main-content\"]/section/div[2]/div/div/div/div[1]/h4");
+   By username_perfil = By.id("namePerfil");
+   By btn_perfil_drop = By.xpath("/html/body/header/div[2]/ul");
 
     public Login(WebDriver driver) {
         this.driver = driver;
     }
 
+    public void clickbtn_perfil_drop() {
+        driver.findElement(btn_perfil_drop).click();
+    }
+    
     public void clickInfo_perfil() {
         driver.findElement(info_perfil).click();
     }
@@ -61,13 +67,14 @@ public class Login {
         return confirm;
     }
     
-    public void Logear(String user, String pass){
+    public void Logear(String user, String pass) throws InterruptedException{
+         TimeUnit.SECONDS.sleep(2);
         WebElement ur = driver.findElement(username);
         WebElement pw = driver.findElement(password);
         WebDriverWait wait = new WebDriverWait(driver, 10);
         wait.until(ExpectedConditions.visibilityOf(ur));
         wait.until(ExpectedConditions.visibilityOf(pw));
-        System.out.println("Entro a logear");
+        
         this.setUsername(user);
         this.setPassword(pass);
         this.clickBtn_ingreso();
@@ -75,19 +82,11 @@ public class Login {
        
     }
     
-    public String validarUsuario(){
-        System.out.println("Entro a validar");
-        WebDriverWait wait = new WebDriverWait(driver, 20);
-         WebElement info = driver.findElement(info_perfil);
-        
-        
-        wait.until(ExpectedConditions.visibilityOf(info));
-        this.clickInfo_perfil();
-        WebElement usr = driver.findElement(username_perfil);
-        wait.until(ExpectedConditions.visibilityOf(usr));
-        
-        
-        return this.getUsername_perfil();
+    public String validarUsuario() throws InterruptedException{
+       
+        this.clickbtn_perfil_drop();
+       this.clickInfo_perfil();
+       return this.getUsername_perfil();
     }
    
            

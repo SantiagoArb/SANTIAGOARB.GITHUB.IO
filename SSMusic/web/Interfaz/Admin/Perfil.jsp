@@ -35,12 +35,13 @@
                             <div class="profile-widget profile-widget-info">
                                 <div class="panel-body">
                                     <div class="col-lg-2 col-sm-2">
-                                        <h4>${sessionScope['NOMBRES']} ${sessionScope['APELLIDO1']}</h4>               
+                                        <h4 id="namePerfil">${sessionScope['NOMBRES']}</h4>               
                                         <div class="follow-ava">
                                             <img src="../../img/profile-widget-avatar.jpg" alt="">
                                         </div>
                                         <h6>${sessionScope['TIPO_PERFIL']}</h6>
                                     </div>
+                                    
                                     <div class="col-lg-4 col-sm-4 follow-info">
                                         <p>Hello I’m Jenifer Smith, a leading expert in interactive and creative design.</p>
                                         <p>@jenifersmith</p>
@@ -50,6 +51,7 @@
                                             <span><i class="icon_pin_alt"></i>NY</span>
                                         </h6>
                                     </div>
+                                    
                                     <div class="col-lg-2 col-sm-6 follow-info weather-category">
                                         <ul>
                                             <li class="active">

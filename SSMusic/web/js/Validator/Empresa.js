@@ -121,13 +121,13 @@ $(document).ready(function () {
 
         // Use Ajax to submit form data
         $.post($form.attr('action'), $form.serialize(), function (result) {
-           $('#Error_ReEmp').text(result);
-                    /*if (result) {
-                        $('#Error_ReEmp').text('Empresa Registrada con exito');
+          
+           /* $('#Error_ReEmp').text(result);
+                    if (result) {
                     } else {
                         $('#Error_ReEmp').text('Hubo un problema');  
-                    }*/
-            
+                    }
+            */
         }, 'json');
     });
 

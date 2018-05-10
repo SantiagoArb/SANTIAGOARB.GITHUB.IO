@@ -120,7 +120,7 @@ public class Registros extends HttpServlet {
             Log log = new Log();
             Empresa emp = new Empresa();
             emp.setId_emp(1);
-            emp.setId_emp_ma(1);
+            emp.setId_emp_ma(2);
             emp.setNIT_emp(request.getParameter("NIT_EMPRESA_D"));
             emp.setNom_emp(request.getParameter("NOM_EMPRESA_D"));
             emp.setNom_encargado(request.getParameter("NOM_ENCARGADO_D"));
@@ -132,13 +132,15 @@ public class Registros extends HttpServlet {
             emp.setFecha_registro(FECHA_REGISTRO);
 
             //Datos log
-            log.setId_usuario_log(Integer.parseInt((String) session.getAttribute("ID_USUARIO")));
+            int id_user = (Integer) session.getAttribute("ID_USUARIO");
+             System.out.println("usuario id : "+id_user);
+            log.setId_usuario_log(id_user);
             log.setTipo_de_gestion("Registro Empresa");
 
             controller_emp edao = new controller_emp();
             controller_log logdao = new controller_log();
             boolean result = edao.registerEmpresa(emp);
-
+            System.out.println("resultado : "+result);
             if (result) {
                 logdao.registerLog(log);
             }
@@ -193,6 +195,7 @@ public class Registros extends HttpServlet {
     
     public String listarEmpresas(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        System.out.println("entro al servlet");
         com.google.gson.JsonObject json = new JsonObject();
         JsonArray array = new JsonArray();
         ArrayList<Modelo.Empresa> resultado;

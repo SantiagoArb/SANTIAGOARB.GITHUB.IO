@@ -5,6 +5,7 @@
  */
 package ssmusictest;
 
+import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -15,8 +16,8 @@ import org.openqa.selenium.WebDriver;
 public class RegistroEmpresa {
     WebDriver driver;
     
-    By btn_infoEmpresas = By.id("info_empresas");
-   By btn_registrar_emp = By.id("registrar_emp");
+    By btn_infoEmpresas = By.xpath("//*[@id=\"sidebar\"]/ul/li[3]/ul/li[2]/a");
+   By btn_registrar_emp = By.xpath("//*[@id=\"data\"]/header/button");
    By txt_nit = By.id("NIT_EMPRESA_D");
    By txt_nombre_emp  = By.id("NOM_EMPRESA_D");
    By txt_nombre_enc  = By.id("NOM_ENCARGADO_D");
@@ -26,15 +27,25 @@ public class RegistroEmpresa {
    By txt_valor_operacion  = By.id("VALOR_OPERACION_D");
    By txt_documento_enc = By.id("DOC_ENCARGADO_D");
    By submit_registro = By.id("RegistroEmpresa");
-   By txt_buscar = By.id("buscar_art");
-   By result_buscar = By.id("row_busqueda");
+   By txt_buscar = By.xpath("//*[@id=\"table_Empresas_filter\"]/label/input");
+   By result_buscar = By.xpath("//*[@id=\"employee_data\"]/tr/td[3]");
    By btn_delete = By.id("eliminar_emp");
    By txt_eliminar = By.id("name_eliminar_emp");
    By btn_submit_delete = By.id("submit_delete");
+   By btn_Moderacion = By.xpath("//*[@id=\"sidebar\"]/ul/li[3]/a");
+   By btn_close = By.xpath("//*[@id=\"Reg_Empresa\"]/div/div[1]/div/button/span");
     
     
     public RegistroEmpresa(WebDriver driver) {
         this.driver = driver;
+    }
+    
+    public void click_btn_Moderacion() {
+        driver.findElement(btn_Moderacion).click();
+    }
+    
+    public void click_btn_close() {
+        driver.findElement(btn_close).click();
     }
 
     public void click_Btn_delete() {
@@ -115,9 +126,14 @@ public class RegistroEmpresa {
         driver.findElement(txt_documento_enc).sendKeys(documento_enc);
     }
 
-    public void Registrar_Empresa(String nit, String nombre_emp, String nombre_enc, String telefono, String correo, String tipo_op, String valor_op, String documento){
+    public void Registrar_Empresa(String nit, String nombre_emp, String nombre_enc, String telefono, String correo, String tipo_op, String valor_op, String documento) throws InterruptedException{
+        TimeUnit.SECONDS.sleep(2);
+        this.click_btn_Moderacion();
+        TimeUnit.SECONDS.sleep(2);
         this.click_Btn_infoEmpresas();
+        TimeUnit.SECONDS.sleep(2);
         this.click_Btn_registrar_emp();
+        TimeUnit.SECONDS.sleep(2);
         this.setTxt_nit(nit);
         this.setTxt_nombre_emp(nombre_emp);
         this.setTxt_nombre_enc(nombre_enc);
@@ -127,6 +143,7 @@ public class RegistroEmpresa {
         this.setTxt_valor_operacion(valor_op);
         this.setTxt_documento_enc(documento);
         this.click_submit_registro();
+        this.click_btn_close();
     }
     
     public void update_Empresa(String nit, String nombre_emp, String nombre_enc, String telefono, String correo, String tipo_op, String valor_op, String documento){
@@ -142,9 +159,14 @@ public class RegistroEmpresa {
         this.setTxt_documento_enc(documento);
         this.click_submit_registro();
     }
-    public String ValidarRegistro(String nombre_emp){
-        
+    public String ValidarRegistro(String nombre_emp) throws InterruptedException{
+        TimeUnit.SECONDS.sleep(2);
+        this.click_btn_Moderacion();
+        TimeUnit.SECONDS.sleep(2);
+        this.click_Btn_infoEmpresas();
+        TimeUnit.SECONDS.sleep(2);
         this.settxt_buscar(nombre_emp);
+        TimeUnit.SECONDS.sleep(2);
         String result=this.getResult_buscar();
         
         return result;
