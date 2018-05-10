@@ -95,7 +95,7 @@ public class Registros extends HttpServlet {
             response.setContentType("text/html");
             response.getWriter().write(RegistroArtista(request, response));
         };
-        if (request.getParameter("listarEmpresa") != null) {
+        if (peticion.equals("listarEmpresa")) {
             response.setContentType("text/html");
             response.getWriter().write(listarEmpresas(request, response));
         };
